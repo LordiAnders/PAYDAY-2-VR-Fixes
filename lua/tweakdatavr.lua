@@ -353,7 +353,7 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 		reload_animation_effect = {
 			part = "exclusive_set",
 			object = "a_efx_exhaust",
-			name = "effects/payday2/particles/weapons/fps_parts/fps_ms3gl_exhaust_smoke",
+			name = "effects/payday2/particles/weapons/fps_parts/fps_ms3gl_exhaust_smoke_vr",
 			pos = Vector3(5,0,0)
 		},
 		start = {
@@ -658,19 +658,12 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 				}
 			},
 			{
-				time = 0.5,
-				pos = Vector3(),
-				rot = Rotation()
-			},
-			{
-				time = 0.7,
-				sound = "wp_hk51b_reload_lever_release",
-				pos = Vector3(5, 0, 0)
-			},
-			{
 				time = 0.9,
-				pos = Vector3(10,0,-4),
-				rot = Rotation(0,0,30),
+				sound = "wp_hk51b_reload_lever_release",
+				effect = {
+					object = "a_shell",
+					name = "effects/payday2/particles/weapons/shells/loader_lmg_vr"
+				},
 				visible = false,
 				--drop_mag = true,
 				anims = {

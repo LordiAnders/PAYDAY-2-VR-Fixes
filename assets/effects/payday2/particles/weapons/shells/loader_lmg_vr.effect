@@ -1,0 +1,23 @@
+<effect force_synch="false">
+    <atom name="sparks0" min_size="1" max_size="1" lifetime="4" random_start_time="false" start_time="0" preroll="0" inherit_velocity_multiplier="1" fade_in_start="-1" fade_in_length="0" fade_out_start="-1" spawn_cull_policy="initialize" cull_policy="update_render" cull_gracetime="0" max_particle_radius="-1" soundbank="" cue="" ambient="false" grab_relative="effect" grab_pos="0 0 0" grab_radius="200" grab_backfacing="false" timeline="">
+        <initializerstack>
+            <boxrandomposition relative="effect" min="0 0 0" max="0 0 0"/>
+            <boxrandomage min="1" max="2"/>
+            <boxrandomrotation relative="effect" min="0 -10 -30" max="20 -5 -1" min_rot="0" max_rot="360"/>
+            <boxrandomvelocity relative="effect" min="200 50 50" max="200 100 50"/>
+            <boxrandomangle min="0" max="-90"/>
+            <boxrandomanglevelocity min="90" max="-90"/>
+        </initializerstack>
+        <simulatorstack>
+            <velocityintegrator channel="world"/>
+            <rotationbyvelocity velocity="8000"/>
+            <ager/>
+            <variableacceleration name="" relative="world" acceleration="0 0 -984"/>
+            <anglevelocityintegrator/>
+            <particleworldcollision radius="10" elasticity="0.52"/>
+        </simulatorstack>
+        <visualizerstack>
+            <model model="units/pd2_dlc_pxp1/weapons/wpn_fps_lmg_hk51b_pts/wpn_fps_lmg_hk51b_loader" object="g_loader" material_config="units/pd2_dlc_pxp1/weapons/wpn_fps_lmg_hk51b_pts/wpn_fps_lmg_hk51b_loader"/>
+        </visualizerstack>
+    </atom>
+</effect>
