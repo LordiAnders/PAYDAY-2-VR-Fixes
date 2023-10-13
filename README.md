@@ -21,6 +21,11 @@ Bunch of fixes for the mostly neglected VR version of PAYDAY 2.
 - Held and dropped magazines that have bullets in them are now affected by your current ammo count.
 - Removed annoying grip points on the LMGs that make them hard to two-hand properly, they now only have 1 grip point.
 
+## Underbarrel weapons
+Overkill had apparantly tried to get underbarrel weapons working in VR.
+As of U240.2 you can toggle underbarrel modes by using the "fire mode" binding, but it can sometimes conflict with the regular fire mode. I'd recommend putting on a forced single/auto fire mod to avoid this.
+Additionally, underbarrel modes can only be toggled while you're not "aiming down sights" (weapon held at eye level and looking straight).
+
 ## Installation
 Drop into BLT mods folder (PAYDAY 2/mods).
 
