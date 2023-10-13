@@ -1,0 +1,97 @@
+--Temporarily changes name_id to the underbarrel name_id when underbarrels are toggled
+--This allows VR tweakdata to be implemented for weapons in underbarrel modes
+
+function NewRaycastWeaponBaseVR:underbarrel_is_on()
+	local underbarrel_part = managers.weapon_factory:get_part_from_weapon_by_type("underbarrel", self._parts)
+
+	if underbarrel_part and alive(underbarrel_part.unit) and underbarrel_part.unit:base() and underbarrel_part.unit:base().toggle then
+		return underbarrel_part.unit:base():is_on()
+	end
+
+	return nil
+end
+
+Hooks:PostHook(NewRaycastWeaponBase,"underbarrel_toggle","VRTweakDataFixes_RaycastUnderbarrelFix_CustomMagUnitFinish",function(self)
+	if self:underbarrel_is_on() and not self.temp_ul_name_id then
+		self.temp_ul_name_id = self.name_id
+		self.name_id = self:underbarrel_name_id()
+	elseif self.temp_ul_name_id then
+		self.name_id = self.temp_ul_name_id
+		self.temp_ul_name_id = nil
+	end
+end)
+
+--Records the ammo count during reload actions to track how many bullets should be visible in magazines, see cosmeticweaponbase.lua
+--This is set before reloading starts since otherwise checking reload_amount when the magazine is spawned would cause the magazine to always be partially filled since magazines are spawned after a delay
+local function VRTweakFixes_StartReload(self)
+	self.vrfixesammoreloadcount = managers.player:player_unit():movement():current_state():_current_reload_amount() or self:get_ammo_total()
+end
+local function VRTweakFixes_FinishReload(self)
+	self.vrfixesammoreloadcount = nil
+end
+Hooks:PreHook(NewRaycastWeaponBaseVR,"start_reload","VRTweakFixes_Magazine_BulletsObjects",VRTweakFixes_StartReload)
+--Hooks:PreHook(NewRaycastWeaponBaseVR,"spawn_belt_magazine_unit","VRTweakFixes_Magazine_BulletsObjects",VRTweakFixes_StartReload)
+--Hooks:PostHook(NewRaycastWeaponBaseVR,"spawn_belt_magazine_unit","VRTweakFixes_Magazine_BulletsObjects",VRTweakFixes_FinishReload)
+Hooks:PostHook(NewRaycastWeaponBaseVR,"finish_reload","VRTweakFixes_Magazine_BulletsObjects",VRTweakFixes_FinishReload)
+
+Hooks:PostHook(NewRaycastWeaponBaseVR,"start_reload","VRTweakFixes_AnimationEffects_Workaround",function(self)
+	--I couldn't get this to work properly as part of reloading timelines so now it's spawned here instead. Used for ms3gl exhaust effect when using exclusive set
+	local tweak_data = tweak_data.vr.reload_timelines[self.name_id].reload_animation_effect
+	if tweak_data then
+		local effect = {
+			effect = Idstring(tweak_data.name)
+		}
+		local unit = nil
+
+		local part_list = managers.weapon_factory:get_parts_from_weapon_by_type_or_perk(tweak_data.part, self._factory_id, self._blueprint)
+		
+		if not part_list or not self._parts[part_list[1]] or not self._parts[part_list[1]].unit then return end
+		
+		unit = self._parts[part_list[1]].unit
+
+		effect.position = tweak_data.pos
+		effect.parent = unit:get_object(Idstring(tweak_data.object))
+
+		World:effect_manager():spawn(effect)
+	end
+end)
+
+--Allows attaching additional units to a held magazine by setting reload_part_addon in weapon reload timeline. Used for ECP held magazine and hk51b magazine
+--Also allows using a different part as held magazine if reload_part_override is set in the reload timeline. Used for certain weapons so they display the correct (modded) ammo when held
+--See weaponfactorymanager.lua which overrides the hardcoded "magazine" part lookup
+
+local old_spawnbeltmagazine = NewRaycastWeaponBaseVR.spawn_belt_magazine_unit
+function NewRaycastWeaponBaseVR:spawn_belt_magazine_unit(pos)
+	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id].reload_part_override
+	self.vrfixesammoreloadcount = managers.player:player_unit():movement():current_state():_current_reload_amount() or self:get_ammo_total()
+
+	local mag_unit = old_spawnbeltmagazine(self,pos)
+
+	local reload_addon = tweak_data.vr.reload_timelines[self.name_id].reload_part_addon
+	if reload_addon then
+		if type(reload_addon) == "table" then
+			for k,v in pairs(reload_addon) do
+				vrtweaksfixes_customparttype = k
+
+				local second_mag = self:spawn_magazine_unit(pos + v.pos,v.rot)
+				mag_unit:link(mag_unit:orientation_object():name(),second_mag)
+			end
+		else
+			vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id].reload_part_addon
+			
+			local second_mag = self:spawn_magazine_unit(pos)
+			mag_unit:link(mag_unit:orientation_object():name(),second_mag)
+		end
+	end
+	
+	vrtweaksfixes_customparttype = nil
+
+	return mag_unit
+end
+
+Hooks:PreHook(NewRaycastWeaponBase,"drop_magazine_object","VRTweakFixes_Magazine_Override",function(self)
+	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id].reload_part_override
+end)
+Hooks:PostHook(NewRaycastWeaponBase,"drop_magazine_object","VRTweakFixes_Magazine_Override",function(self)
+	vrtweaksfixes_customparttype = nil
+end)

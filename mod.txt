@@ -1,0 +1,36 @@
+{
+    "name" : "VR Fixes",
+    "author" : "LordiAnders",
+    "version" : "1",
+	"blt_version" : 2,
+	"hooks" : [
+    {
+        "hook_id" : "lib/tweak_data/tweakdatavr",
+        "script_path" : "lua/tweakdatavr.lua"
+    },
+	{
+        "hook_id" : "lib/units/weapons/vr/newraycastweaponbasevr",
+        "script_path" : "lua/newraycastweaponbasevr.lua"
+    },
+	{
+        "hook_id" : "lib/units/beings/player/states/vr/playerstandardvr",
+        "script_path" : "lua/playerstandardvr.lua"
+    },
+	{
+        "hook_id" : "lib/units/weapons/cosmeticsweaponbase",
+        "script_path" : "lua/cosmeticsweaponbase.lua"
+    },
+	{
+        "hook_id" : "lib/managers/weaponfactorymanager",
+        "script_path" : "lua/weaponfactorymanager.lua"
+    },
+	{
+        "hook_id" : "lib/units/weapons/vr/akimboweaponbasevr",
+        "script_path" : "lua/akimboweaponbasevr.lua"
+    },
+	{
+        "hook_id" : "lib/tweak_data/weaponfactorytweakdata",
+        "script_path" : "lua/weaponfactorytweakdata.lua"
+    }
+    ]
+}
