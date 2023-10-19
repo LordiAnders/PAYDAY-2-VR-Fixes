@@ -47,7 +47,7 @@ function NewRaycastWeaponBase:spawn_magazine_unit(pos, rot, hide_bullets)
 			
 			local ammo_offset = 0
 			
-			local reload_addon = tweak_data.vr.reload_timelines[self.name_id].reload_part_addon
+			local reload_addon = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_addon or nil
 			if reload_addon then
 				if type(reload_addon) == "table" then
 					ammo_offset = reload_addon[mag_data.type] and reload_addon[mag_data.type].ammo_offset or 0
@@ -118,7 +118,7 @@ function NewRaycastWeaponBase:spawn_magazine_unit(pos, rot, hide_bullets)
 		end
 	end
 	
-	if tweak_data.vr.reload_timelines[self.name_id].reload_part_override_hidden then
+	if tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override_hidden then
 		for _, object_name in ipairs(tweak_data.vr.reload_timelines[self.name_id].reload_part_override_hidden) do
 			local object = mag_unit:get_object(Idstring(object_name))
 

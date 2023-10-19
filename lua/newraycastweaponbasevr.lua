@@ -36,18 +36,17 @@ Hooks:PostHook(NewRaycastWeaponBaseVR,"finish_reload","VRTweakFixes_Magazine_Bul
 
 Hooks:PostHook(NewRaycastWeaponBaseVR,"start_reload","VRTweakFixes_AnimationEffects_Workaround",function(self)
 	--I couldn't get this to work properly as part of reloading timelines so now it's spawned here instead. Used for ms3gl exhaust effect when using exclusive set
-	local tweak_data = tweak_data.vr.reload_timelines[self.name_id].reload_animation_effect
+	local tweak_data = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_animation_effect or nil
 	if tweak_data then
 		local effect = {
 			effect = Idstring(tweak_data.name)
 		}
-		local unit = nil
 
 		local part_list = managers.weapon_factory:get_parts_from_weapon_by_type_or_perk(tweak_data.part, self._factory_id, self._blueprint)
 		
 		if not part_list or not self._parts[part_list[1]] or not self._parts[part_list[1]].unit then return end
 		
-		unit = self._parts[part_list[1]].unit
+		local unit = self._parts[part_list[1]].unit
 
 		effect.position = tweak_data.pos
 		effect.parent = unit:get_object(Idstring(tweak_data.object))
@@ -62,12 +61,12 @@ end)
 
 local old_spawnbeltmagazine = NewRaycastWeaponBaseVR.spawn_belt_magazine_unit
 function NewRaycastWeaponBaseVR:spawn_belt_magazine_unit(pos)
-	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id].reload_part_override
+	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override or nil
 	self.vrfixesammoreloadcount = managers.player:player_unit():movement():current_state():_current_reload_amount() or self:get_ammo_total()
 
 	local mag_unit = old_spawnbeltmagazine(self,pos)
 
-	local reload_addon = tweak_data.vr.reload_timelines[self.name_id].reload_part_addon
+	local reload_addon = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_addon or nil
 	if reload_addon then
 		if type(reload_addon) == "table" then
 			for k,v in pairs(reload_addon) do
@@ -77,7 +76,7 @@ function NewRaycastWeaponBaseVR:spawn_belt_magazine_unit(pos)
 				mag_unit:link(mag_unit:orientation_object():name(),second_mag)
 			end
 		else
-			vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id].reload_part_addon
+			vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_addon or nil
 			
 			local second_mag = self:spawn_magazine_unit(pos)
 			mag_unit:link(mag_unit:orientation_object():name(),second_mag)
@@ -90,7 +89,7 @@ function NewRaycastWeaponBaseVR:spawn_belt_magazine_unit(pos)
 end
 
 Hooks:PreHook(NewRaycastWeaponBase,"drop_magazine_object","VRTweakFixes_Magazine_Override",function(self)
-	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id].reload_part_override
+	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override or nil
 end)
 Hooks:PostHook(NewRaycastWeaponBase,"drop_magazine_object","VRTweakFixes_Magazine_Override",function(self)
 	vrtweaksfixes_customparttype = nil
