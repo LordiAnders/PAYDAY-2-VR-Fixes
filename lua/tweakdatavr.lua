@@ -13,21 +13,15 @@
 			parts: Parts can be set as boolean instead of table of objects to hide the whole part. Must be table of objects on hk51b or it breaks bullet belt physics
 			
 		reload_part_type: Needs to be a valid part otherwise reload timeline will not play properly
-		
-		anims: Animations are errornously reset when belt is touched, caused deliberately by _set_parts_enabled. Requires overriding function to fix
-		
+
 		reload_part_override (Custom): Used in favor of custom_mag_unit since it makes it possible for weapon modifications to affect the appearance of held magazines, such as stinger grenades for underbarrels, or crossbow bolts
 		
 		hk51b: The bullet belt code is just way over my head. It functions as a charm which only works on an actual weapon unit. I've instead redone the held magazine by hand with reload_part_addon, but it won't have any physics
 ]]
 
 Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_data)
-	self.locked.weapons.contraband = nil
-	self.locked.weapons.groza = nil
-	self.locked.weapons.hunter = nil
-	self.locked.weapons.frankish = nil
-	self.locked.weapons.arblast = nil
-
+	self.locked.weapons = nil
+	
 	--Little Friend 7.62 - Underbarrel mode (pd2_dlc_chico)
 	self.weapon_offsets.weapons.contraband_m203 = self.weapon_offsets.weapons.contraband
 	self.weapon_assist.weapons.contraband_m203 = self.weapon_assist.weapons.contraband
@@ -414,30 +408,20 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 		{
 			time = 0,
 			sound = "wp_foley_generic_lever_pull",
-			anims = {
-				{
-					anim_group = "reload",
-					to = 0.8,
-					from = 0.4,
-					part = "magazine"
-				}
-			}
+			rot = Rotation()
+		},
+		{
+			time = 0.03,
+			rot = Rotation(0,0,-5)
 		},
 		{
 			time = 0.1,
-			sound = "wp_korth_reload_mag_out"
+			sound = "wp_korth_reload_mag_out",
+			rot = Rotation(0,0,-95)
 		},
 		{
 			time = 0.2,
 			sound = "wp_korth_reload_bullet_out",
-			anims = {
-				{
-					anim_group = "reload",
-					to = 2.0,
-					from = 1.3,
-					part = "magazine"
-				}
-			},
 			visible = {
 				visible = false,
 				parts = {
@@ -910,163 +894,23 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	}
 
 	--KSP (pd2_dlc_gage_lmg)
-	self.reload_timelines.m249 = {
-		start = {
-			{
-				time = 0,
-				sound = "wp_m249_cover_up",
-				anims = {
-					{
-						anim_group = "reload",
-						to = 0.9,
-						from = 0.5,
-						part = "upper_reciever"
-					}
-				}
-			},
-			{
-				time = 0.05,
-				pos = Vector3(),
-				rot = Rotation()
-			},
-			{
-				drop_mag = true,
-				time = 0.07,
-				visible = false,
-				sound = "wp_m249_box_out",
-				pos = Vector3(-7, 0, 0),
-				rot = Rotation(0,0,-15)
-			}
-		},
-		finish = {
-			{
-				time = 0,
-				sound = "wp_m249_box_in",
-				visible = true,
-				pos = Vector3(-7, 0, 0),
-				rot = Rotation(0,0,-15),
-				anims = {
-					{
-						anim_group = "reload",
-						--to = 3.2,
-						from = 3.9,
-						part = "upper_reciever"
-					}
-				}
-			},
-			{
-				time = 0.46,
-				pos = Vector3(),
-				rot = Rotation()
-			},
-			{
-				time = 0.47,
-				sound = "wp_m249_cover_down"
-			},
-			{
-				time = 0.98,
-				sound = "wp_m249_lever_release"
-			}
-		}
-	}
+	self.reload_timelines.m249.start[2].pos = nil
+	self.reload_timelines.m249.start[3].pos = Vector3(-5, 0, -0.5)
+	self.reload_timelines.m249.start[3].rot = Rotation(0,0,-15)
+	self.reload_timelines.m249.start[4].time = 0.03
+	self.reload_timelines.m249.start[4].pos = nil
+	self.reload_timelines.m249.finish[1].pos = Vector3(-5, 0, -0.5)
+	self.reload_timelines.m249.finish[1].rot = Rotation(0,0,-15)
+	self.reload_timelines.m249.finish[2].pos = nil
+	self.reload_timelines.m249.finish[3].pos = Vector3()
+	self.reload_timelines.m249.finish[3].rot = Rotation()
 	
 	--KSP 58 (pd2_dlc_par)
 	self.reload_timelines.par = deep_clone(self.reload_timelines.m249)
-	self.reload_timelines.par.start[1].sound = "wp_svinet_cover_up"
-	self.reload_timelines.par.start[1].anims = {
-		{
-			anim_group = "reload",
-			to = 2.9,
-			from = 2.5,
-			part = "upper_reciever"
-		}
-	}
-	self.reload_timelines.par.start[3].sound = "wp_svinet_mag_out"
+	self.reload_timelines.par.start[1].sound = "wp_svinet_mag_out"
 	self.reload_timelines.par.finish[1].sound = "wp_svinet_mag_in"
-	self.reload_timelines.par.finish[1].anims = {
-		{
-			anim_group = "reload",
-			from = 5.9,
-			part = "upper_reciever"
-		}
-	}
-	self.reload_timelines.par.finish[3].sound = "wp_svinet_cover_down"
 	self.reload_timelines.par.finish[4].sound = "wp_svinet_lever_release"
 
-	--Buzzsaw 42 (pd2_dlc_gage_historical)
-	local mg42_parts = {"g_mag","g_bullet_1","g_bullet_2","g_bullet_3","g_bullet_4","g_bullet_5","g_bullet_6","g_band_1","g_band_2","g_band_3","g_band_4","g_mag_handle"}
-	self.reload_timelines.mg42.start = {
-		{
-			time = 0,
-			sound = "wp_mg42_cover_open",
-			anims = {
-				{
-					anim_group = "reload",
-					to = 3.7,
-					from = 2.4,
-					part = "lower_reciever"
-				}
-			}
-		},
-		{
-			time = 0.07,
-			sound = "wp_mg42_box_remove",
-			anims = {
-				{
-					anim_group = "reload",
-					to = 3.9,
-					from = 3.4,
-					part = "lower_reciever"
-				}
-			}
-		},
-		{
-			time = 0.12,
-			visible = {
-				visible = false,
-				parts = {
-					lower_reciever = mg42_parts
-				}
-			}
-		}
-	}
-	self.reload_timelines.mg42.finish = {
-		{
-			time = 0,
-			sound = "wp_mg42_box_slide_in",
-			visible = {
-				visible = true,
-				parts = {
-					lower_reciever = mg42_parts
-				}
-			},
-			anims = {
-				{
-					anim_group = "reload",
-					to = 4.9,
-					from = 4.4,
-					part = "lower_reciever"
-				}
-			}
-		},
-		{
-			time = 0.76,
-			sound = "wp_mg42_cover_close",
-			anims = {
-				{
-					anim_group = "reload",
-					--to = 0.9,
-					from = 6.1,
-					part = "lower_reciever"
-				}
-			}
-		},
-		{
-			time = 0.99,
-			sound = "wp_mg42_lever_release"
-		}
-	}
-	
 	--Airbow (pd2_dlc_ecp)
 	self.magazine_offsets.ecp.weapon_offset = Vector3(0,12,10)
 	self.reload_timelines.ecp = {
