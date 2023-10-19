@@ -15,9 +15,17 @@ Hooks:PostHook(NewRaycastWeaponBase,"underbarrel_toggle","VRTweakDataFixes_Rayca
 	if self:underbarrel_is_on() and not self.temp_ul_name_id then
 		self.temp_ul_name_id = self.name_id
 		self.name_id = self:underbarrel_name_id()
+		if alive(self._second_gun) then
+			self._second_gun:base().temp_ul_name_id = self._second_gun:base().name_id
+			self._second_gun:base().name_id = self._second_gun:base():underbarrel_name_id()
+		end
 	elseif self.temp_ul_name_id then
 		self.name_id = self.temp_ul_name_id
 		self.temp_ul_name_id = nil
+		if alive(self._second_gun) then
+			self._second_gun:base().name_id = self._second_gun:base().temp_ul_name_id
+			self._second_gun:base().temp_ul_name_id = nil
+		end
 	end
 end)
 

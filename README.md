@@ -5,6 +5,7 @@ Bunch of fixes for the mostly neglected VR version of PAYDAY 2.
 - Added proper reload timelines (animations and sounds) for all weapons that were missing them or had broken timelines.
 - Improved reload timelines on some weapons that had little animation or to reduce clipping.
 - Fixed many weapons lacking reload sounds.
+- Adjusted many weapon offsets so they sit better in the hand.
 - Fixed several two-hand grip points that were poorly positioned or used the wrong hand animation.
 - Fixed several magazines being held incorrectly.
 - Fixed Airbow and SG Versteckt 51D not displaying held magazines properly.
@@ -31,13 +32,3 @@ Additionally, underbarrel modes can only be toggled while you're not "aiming dow
 
 ## Installation
 Drop into BLT mods folder (PAYDAY 2/mods).
-
-## TODO
-- Look through reload timelines for the following weapon DLCs:
-  - Fugitive Weapon Pack
-  - Gunslinger Weapon Pack
-  - Jiu Feng Smuggler Pack
-  - Jiu Feng Smuggler Pack 3
-  - Jiu Feng Smuggler Pack 4
-  - McShay Weapon Pack 3
-  - McShay Weapon Pack 4

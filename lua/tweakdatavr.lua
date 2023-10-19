@@ -910,6 +910,467 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	self.reload_timelines.par.start[1].sound = "wp_svinet_mag_out"
 	self.reload_timelines.par.finish[1].sound = "wp_svinet_mag_in"
 	self.reload_timelines.par.finish[4].sound = "wp_svinet_lever_release"
+	
+	--M60 (pd2_dlc_atw)
+	self.weapon_assist.weapons.m60.points[1].grip = "idle_wpn"
+	self.weapon_assist.weapons.m60.points[2] = nil
+	self.weapon_offsets.weapons.m60.position = Vector3(-0.5, 2, 1.5)
+	self.reload_timelines.m60 = deep_clone(self.reload_timelines.m249)
+	self.reload_timelines.m60.start[1].sound = "wp_m60_reload_mag_box_out"
+	self.reload_timelines.m60.finish[1].sound = "wp_m60_reload_mag_box_in"
+	self.reload_timelines.m60.finish[4].sound = "wp_m60_reload_lever_release"
+	
+	--Akron HC (pd2_dlc_pxp3)
+	self.reload_timelines.hcar.start[1].sound = "wp_hcar_reload_empty_mag_out"
+	self.reload_timelines.hcar.finish[1].sound = "wp_hcar_reload_empty_mag_in"
+	self.reload_timelines.hcar.finish[4].sound = "wp_hcar_reload_empty_bolt_release"
+	
+	--Campbell 74 (pd2_dlc_pxp4)
+	self.weapon_offsets.weapons.kacchainsaw = {
+		grip = "weapon_2_grip",
+		position = Vector3(-0,4,1.8)
+	}
+	self.weapon_assist.weapons.kacchainsaw = {
+		position = Vector3(0,49,10)
+	}
+	self.reload_timelines.kacchainsaw = deep_clone(self.reload_timelines.m249)
+	self.reload_timelines.kacchainsaw.start[1].sound = "wp_kac_reload_box_out"
+	self.reload_timelines.kacchainsaw.finish[1].sound = "wp_kac_reload_box_in"
+	self.reload_timelines.kacchainsaw.finish[4].sound = "wp_kac_reload_lever_push"
+	
+	--Campbell 74 - Underbarrel mode (pd2_dlc_pxp4)
+	self.weapon_offsets.weapons.kacchainsaw_flamethrower = self.weapon_offsets.weapons.kacchainsaw
+	self.weapon_assist.weapons.kacchainsaw_flamethrower = self.weapon_assist.weapons.kacchainsaw
+	self.magazine_offsets.kacchainsaw_flamethrower = {
+		position = Vector3(0,-12,1),
+		rotation = Rotation(0,50,0),
+		weapon_offset = Vector3(0,60,-12)
+	}
+	self.reload_timelines.kacchainsaw_flamethrower = {
+		reload_part_type = "underbarrel",
+		reload_part_override = "underbarrel",
+		reload_part_override_hidden = {
+			"g_flame_mag_loader",
+			"g_flamethrower",
+			"g_cap"
+		},
+		start = {
+			{
+				time = 0,
+				anims = {
+					{
+						anim_group = "bipod_reload",
+						to = 0.9,
+						from = 0.3,
+						part = "underbarrel"
+					}
+				}
+			},
+			{
+				time = 0.05,
+				sound = "wp_kac_reload_bottle_out"
+			},
+			{
+				time = 0.3,
+				drop_mag = true,
+				visible = {
+					visible = false,
+					parts = {
+						underbarrel = {
+							"g_flame_mag_a"
+						}
+					}
+				}
+			},
+			{
+				time = 0.35,
+				sound = "wp_kac_reload_bottle_hit_ground"
+			}
+		},
+		finish = {
+			{
+				time = 0,
+				anims = {
+					{
+						anim_group = "bipod_reload",
+						from = 1.85,
+						part = "underbarrel"
+					}
+				},
+				visible = {
+					visible = true,
+					parts = {
+						underbarrel = {
+							"g_flame_mag_a"
+						}
+					}
+				}
+			},
+			{
+				time = 0.3,
+				sound = "wp_kac_reload_bottle_lock",
+			}
+		}
+	}
+	
+	--Gecko M2 (pd2_dlc_lawp)
+	self.magazine_offsets.maxim9 = {
+		position = Vector3(0.5,2,-2)
+	}
+	self.reload_timelines.maxim9 = deep_clone(self.reload_timelines.legacy)
+	self.reload_timelines.maxim9.start[1].sound = "wp_max9_mag_throw"
+	self.reload_timelines.maxim9.finish[1].sound = "wp_max9_mag_in"
+	self.reload_timelines.maxim9.finish[4].sound = "wp_max9_slide_release"
+	self.magazine_offsets.x_maxim9 = self.magazine_offsets.maxim9
+	self.reload_timelines.x_maxim9 = self.reload_timelines.maxim9
+	
+	--Repeater 1874 (pd2_dlc_west)
+	self.weapon_offsets.weapons.winchester1874 = {
+		grip = "weapon_2_grip",
+		position = Vector3(-0.2,-1,-0.4)
+	}
+	self.magazine_offsets.winchester1874 = {
+		position = Vector3(2, -3, 2),
+		rotation = Rotation(-15, 10, 0)
+	}
+	self.reload_timelines.winchester1874.reload_part_override_hidden = {
+		"g_shute_lod0",
+		"g_bullet"
+	}
+	
+	--Bernetti Rangehitter (pd2_dlc_mxw)
+	self.weapon_offsets.weapons.sbl = {
+		grip = "weapon_2_grip",
+		position = Vector3(-0.2,-1,-0.4)
+	}
+	self.magazine_offsets.sbl = {
+		position = Vector3(2, -3, 2),
+		rotation = Rotation(-15, 10, 0)
+	}
+	self.reload_timelines.sbl.reload_part_override_hidden = {
+		"g_shute",
+		"g_bullet"
+	}
+	
+	--Frenchman Model 87 (pd2_dlc_mxw)
+	self.reload_timelines.model3.start[1].anims[1].from = 0.2
+	self.reload_timelines.model3.start[2].time = 0.13
+	self.reload_timelines.model3.start[3].time = 0.13
+	self.reload_timelines.model3.finish[3].anims[1].from = 2.0
+	self.reload_timelines.x_model3 = self.reload_timelines.model3
+	
+	--Crosskill Chunky Compact (pd2_dlc_fawp)
+	self.reload_timelines.x_m1911.start[1].sound = "wp_m1911_mag_out"
+	self.reload_timelines.x_m1911.finish[1].sound = "wp_m1911_mag_in"
+	self.reload_timelines.x_m1911.finish[4].sound = "wp_m1911_cock"
+	
+	--AK Gen 21 Tactical (pd2_dlc_fawp)
+	self.weapon_offsets.weapons.vityaz.position = Vector3(0,3,0)
+	self.weapon_offsets.weapons.x_vityaz.position = Vector3(0,3,0)
+	self.reload_timelines.vityaz.start[1].sound = "wp_vityaz_mag_grab_out"
+	self.reload_timelines.vityaz.finish[1].sound = "wp_vityaz_mag_slide_in"
+	self.reload_timelines.x_vityaz.start[1].sound = "wp_vityaz_mag_grab_out"
+	self.reload_timelines.x_vityaz.finish[1].sound = "wp_vityaz_mag_slide_in"
+
+	--Wasp-DS (pd2_dlc_lawp)
+	self.weapon_offsets.weapons.fmg9 = {
+		position = Vector3(-0.5, 1, 0)
+	}
+	self.magazine_offsets.fmg9 = {
+		position = Vector3(0, 5, 8)
+	}
+	self.reload_timelines.fmg9 = {
+		start = {
+			{
+				time = 0,
+				sound = "wp_fmg9_reload_empty_mag_out"
+			},
+			{
+				time = 0.001,
+				pos = Vector3()
+			},
+			{
+				time = 0.025,
+				pos = Vector3(0, -1, -2)
+			},
+			{
+				drop_mag = true,
+				time = 0.05,
+				visible = false,
+				pos = Vector3(0, -3, -12)
+			}
+		},
+		finish = {
+			{
+				time = 0,
+				sound = "wp_fmg9_reload_empty_mag_in",
+				visible = true,
+				pos = Vector3(0, -3, -12),
+			},
+			{
+				time = 0.1,
+				pos = Vector3(0, -1, -2)
+			},
+			{
+				time = 0.56,
+				sound = "wp_fmg9_reload_empty_lever_release",
+				pos = Vector3()
+			}
+		}
+	}
+
+	--Argos III (pd2_dlc_lawp)
+	self.reload_timelines.ultima.start[1].sound = "wp_ultima_reload_empty_lever_slam"
+	self.reload_timelines.ultima.finish[2].sound = "wp_ultima_reload_empty_shell_in"
+	self.reload_timelines.ultima.finish[3].sound = "wp_ultima_reload_spin"
+	
+	--Reinfeld 88 (pd2_dlc_mxw)
+	self.weapon_offsets.weapons.m1897.position = Vector3(0,1.7,0)
+	self.reload_timelines.m1897.start[1].sound = "wp_m1897_reload_exit_push_handle"
+
+	--Mosconi 12G Tactical (pd2_dlc_fawp)
+	self.reload_timelines.m590.start[1].sound = "wp_m590_reload_cock"
+	self.reload_timelines.m590.finish[2].sound = "wp_m590_shell_insert"
+	self.reload_timelines.m590.finish[3].sound = "wp_m590_reload_cock"
+
+	--Deimos (pd2_dlc_pxp4)
+	self.weapon_offsets.weapons.supernova.position = Vector3(0,8,1)
+	self.reload_timelines.supernova.start[1].sound = "wp_supernova_recoil_pump_back"
+	self.reload_timelines.supernova.finish[1].sound = "wp_supernova_reload_shell_in"
+	self.reload_timelines.supernova.finish[1].anims = {
+		{
+			anim_group = "reload_exit",
+			to = 0.7,
+			from = 0.2,
+			part = "foregrip"
+		}
+	}
+	self.reload_timelines.supernova.finish[2].sound = "wp_supernova_recoil_pump_forward"
+	
+	--Amaroq 900 (pd2_dlc_pxp4)
+	self.magazine_offsets.awp.grip = "idle_wpn"
+	self.reload_timelines.awp.start[1].sound = "wp_awp_reload_mag_out"
+	self.reload_timelines.awp.finish[1].sound = "wp_awp_reload_mag_in"
+	self.reload_timelines.awp.finish[4].sound = "wp_awp_reload_lever_push"
+
+	--Rodion 3B (pd2_dlc_pxp3)
+	self.weapon_offsets.weapons.tkb = {
+		position = Vector3(-0.5,1,1.3)
+	}
+	self.reload_timelines.tkb.start[1].sound = "wp_tkb_reload_mag_out"
+	self.reload_timelines.tkb.finish[2].sound = "wp_tkb_reload_mag_in"
+	self.reload_timelines.tkb.finish[3].sound = "wp_tkb_reload_bolt_release"
+
+	--KS12 Urban (pd2_dlc_tawp)
+	self.weapon_offsets.weapons.shak12 = {
+		position = Vector3(-0.5,-1,3)
+	}
+	self.reload_timelines.shak12.start[1].sound = "wp_shak12_clip_out"
+	self.reload_timelines.shak12.finish[1].sound = "wp_shak12_clip_in"
+	self.reload_timelines.shak12.finish[4].sound = "wp_shak12_lever_release"
+
+	--RUS-12 Angry Tiger (pd2_dlc_tawp)
+	self.magazine_offsets.rsh12 = {
+		position = Vector3(3, 2, 2),
+		rotation = Rotation(-45, 12, -20)
+	}
+	self.reload_timelines.rsh12.custom_mag_unit = "units/pd2_dlc_vr/units/wpn_pis_speedloader_6x/wpn_pis_speedloader_6x"
+	local rsh12_bullets = {
+		"g_bullet_1",
+		"g_bullet_2",
+		"g_bullet_3",
+		"g_bullet_4",
+		"g_bullet_5",
+		"g_tip_1",
+		"g_tip_2",
+		"g_tip_3",
+		"g_tip_4",
+		"g_tip_5"
+	}
+	self.reload_timelines.rsh12.start[3].visible.parts.lower_reciever = rsh12_bullets
+	self.reload_timelines.rsh12.start[3].effect.name = "effects/payday2/particles/weapons/shells/shell_revolver_dump"
+	self.reload_timelines.rsh12.finish[1].visible.parts.lower_reciever = rsh12_bullets
+	
+	--Káng Arms Model 54 (pd2_dlc_tawp)
+	self.reload_timelines.type54.start[1].sound = "wp_type54_mag_out"
+	self.reload_timelines.type54.finish[1].sound = "wp_type54_mag_in"
+	self.reload_timelines.type54.finish[4].sound = "wp_type54_mantle_forward"
+	self.reload_timelines.x_type54 = self.reload_timelines.type54
+	
+	--Káng Arms Model 54 - Underbarrel mode (pd2_dlc_tawp)
+	self.weapon_offsets.weapons.type54_underbarrel = self.weapon_offsets.weapons.type54
+	self.magazine_offsets.type54_underbarrel = {
+		position = Vector3(0,1,0),
+		rotation = Rotation(-10,80,0),
+		weapon_offset = Vector3(0,16,-2)
+	}
+	self.reload_timelines.type54_underbarrel = {
+		custom_mag_unit = "units/payday2/weapons/wpn_fps_shell/wpn_fps_shell",
+		reload_part_type = "underbarrel",
+		start = {
+			{
+				time = 0,
+				sound = "wp_type54shotty_barrel_open",
+				anims = {
+					{
+						anim_group = "bipod_reload",
+						to = 0.7,
+						from = 0.35,
+						part = "underbarrel"
+					}
+				}
+			},
+			{
+				time = 0.18,
+				sound = "wp_type54shotty_shell_out",
+				visible = {
+					visible = false,
+					parts = {
+						underbarrel = {
+							"g_shell"
+						}
+					}
+				},
+				effect = {
+					part = "underbarrel",
+					object = "g_shell",
+					name = "effects/payday2/particles/weapons/shells/shell_slug_straight"
+				}
+			}
+		},
+		finish = {
+			{
+				time = 0,
+				sound = "wp_type54shotty_shell_in",
+				anims = {
+					{
+						anim_group = "bipod_reload",
+						from = 1.35,
+						part = "underbarrel"
+					}
+				},
+				visible = {
+					visible = true,
+					parts = {
+						underbarrel = {
+							"g_shell"
+						}
+					}
+				}
+			},
+			{
+				time = 0.8,
+				sound = "wp_type54shotty_barrel_close",
+			}
+		}
+	}
+	self.weapon_offsets.weapons.x_type54_underbarrel = self.weapon_offsets.weapons.type54_underbarrel
+	self.magazine_offsets.x_type54_underbarrel = self.magazine_offsets.type54_underbarrel
+	self.reload_timelines.x_type54_underbarrel = self.reload_timelines.type54_underbarrel
+
+	--HOLT 9mm (pd2_dlc_atw)
+	self.weapon_offsets.weapons.holt = {
+		position = Vector3(-0.5, 1.9, 1.6)
+	}
+	self.magazine_offsets.holt = {
+		position = Vector3(1,1.5,-5)
+	}
+	self.magazine_offsets.x_holt = self.magazine_offsets.holt
+	self.weapon_offsets.weapons.x_holt = self.weapon_offsets.weapons.holt
+
+	--R700 (pd2_dlc_atw)
+	self.weapon_offsets.weapons.r700 = {
+		grip = "weapon_2_grip",
+		position = Vector3(-0.2, -1, 0)
+	}
+	self.reload_timelines.r700.start[1].sound = "wp_r700_reload_empty_mag_out"
+	self.reload_timelines.r700.finish[1].sound = "wp_r700_reload_empty_mag_in"
+	self.reload_timelines.r700.finish[4].sound = "wp_r700_reload_empty_lever_forward"
+	
+	--Aran G2 (pd2_dlc_pxp3)
+	self.weapon_offsets.weapons.contender.position = Vector3(0.5, 3.2, -2)
+	self.weapon_assist.weapons.contender.position = Vector3(-1, 18, 2)
+	self.reload_timelines.contender = {
+		start = {
+			{
+				time = 0,
+				sound = "wp_tcg2_reload_barrel_open",
+				anims = {
+					{
+						anim_group = "reload",
+						to = 0.2,
+						part = "magazine"
+					},
+					{
+						anim_group = "reload",
+						to = 0.2,
+						part = "barrel"
+					}
+				}
+			},
+			{
+				time = 0.06,
+				visible = {
+					visible = false,
+					parts = {
+						magazine = true,
+						barrel = {
+							"g_bullet"
+						}
+					}
+				},
+				effect = {
+					object = "a_m",
+					name = "effects/payday2/particles/weapons/shells/shell_556"
+				}
+			}
+		},
+		finish = {
+			{
+				time = 0,
+				sound = "wp_tcg2_reload_bullet_in",
+				visible = {
+					visible = true,
+					parts = {
+						magazine = true,
+						barrel = {
+							"g_bullet"
+						}
+					}
+				},
+				anims = {
+					{
+						anim_group = "reload",
+						to = 0.75,
+						from = 0.55,
+						part = "magazine"
+					},
+					{
+						anim_group = "reload",
+						to = 0.75,
+						from = 0.55,
+						part = "barrel"
+					}
+				}
+			},
+			{
+				time = 0.99,
+				sound = "wp_tcg2_reload_barrel_close",
+				anims = {
+					{
+						anim_group = "reload",
+						from = 0.85,
+						part = "magazine"
+					},
+					{
+						anim_group = "reload",
+						from = 0.85,
+						part = "barrel"
+					}
+				}
+			}
+		}
+	}
 
 	--Airbow (pd2_dlc_ecp)
 	self.magazine_offsets.ecp.weapon_offset = Vector3(0,12,10)
@@ -1068,14 +1529,18 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	self.reload_timelines.x_sko12.finish[4].sound = nil
 	
 	--Bernetti Auto (pd2_dlc_afp)
+	self.weapon_offsets.weapons.beer.position = Vector3(-0.5,3,1.5)
+	self.weapon_offsets.weapons.x_beer.position = Vector3(-0.5,3,1.5)
 	self.reload_timelines.beer.start[1].sound = "wp_beer_mag_out"
 	self.reload_timelines.beer.finish[1].sound = "wp_beer_mag_in"
 	self.reload_timelines.beer.finish[4].sound = "wp_beer_slide_forward"
-	self.reload_timelines.x_beer.start[1].sound = "wp_beer_x_mag_out" --Akimbo weapons use their own _x sounds for some reason
+	self.reload_timelines.x_beer.start[1].sound = "wp_beer_x_mag_out"
 	self.reload_timelines.x_beer.finish[1].sound = "wp_beer_x_mag_in"
 	self.reload_timelines.x_beer.finish[4].sound = "wp_beer_x_slide_forward"
 
 	--Czech 92 (pd2_dlc_afp)
+	self.weapon_offsets.weapons.czech.position = Vector3(-0.5,4,1)
+	self.weapon_offsets.weapons.x_czech.position = Vector3(-0.5,4,1)
 	self.reload_timelines.czech.start[1].sound = "wp_czech_mag_out"
 	self.reload_timelines.czech.finish[1].sound = "wp_czech_mag_in"
 	self.reload_timelines.czech.finish[4].sound = "wp_czech_slide_forward"
@@ -1084,6 +1549,8 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	self.reload_timelines.x_czech.finish[4].sound = "wp_czech_x_slide_forward"
 
 	--Igor Automatik (pd2_dlc_afp)
+	self.weapon_offsets.weapons.stech.position = Vector3(-0.5,2,1.5)
+	self.weapon_offsets.weapons.x_stech.position = Vector3(-0.5,2,1.5)
 	self.reload_timelines.stech.start[1].sound = "wp_stetch_mag_release_button"
 	self.reload_timelines.stech.start[2].sound = "wp_stetch_mag_slide_out"
 	self.reload_timelines.stech.finish[1].sound = "wp_stetch_mag_slide_in"
@@ -1130,9 +1597,12 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	self.reload_timelines.scout.finish[4].sound = "wp_steyr_scout_reload_empty_bolt_in"
 	
 	--Káng Arms X1 (pd2_dlc_sawp)
+	self.weapon_offsets.weapons.qbu88.position = Vector3(-0.2,1.5,1.5)
+	self.magazine_offsets.qbu88.position = Vector3(1.5,0.5,0)
 	self.reload_timelines.qbu88.start[1].sound = "wp_qbu88_mag_out"
 	self.reload_timelines.qbu88.finish[1].sound = "wp_qbu88_mag_in"
 	self.reload_timelines.qbu88.finish[3].sound = "wp_qbu88_lever_release"
+	
 	
 	--North Star (pd2_dlc_savi)
 	self.weapon_hidden.victor = {

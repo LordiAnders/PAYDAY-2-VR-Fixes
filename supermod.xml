@@ -3,6 +3,7 @@
 	<assets base_path="assets/">
 		<group name="effects/payday2/particles/weapons/">
 			<file :name="shells/loader_lmg_vr.effect"/>
+			<file :name="shells/shell_slug_straight.effect"/>
 			<file :name="fps_parts/fps_ms3gl_exhaust_smoke_vr.effect"/>
 		</group>
 	</assets>
