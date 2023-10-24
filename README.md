@@ -17,6 +17,7 @@ Bunch of fixes for the mostly neglected VR version of PAYDAY 2.
 - Removed hitpoint variable from the Tactical Flashlight melee that made it difficult to hit enemies.
 - The game no longer automatically attempts to do a weapon butt melee attack when turning.
 - Fixed the Counterstrike skill not working with VR melee.
+- Fixed the Stockholm Syndrome skill not working. Pressing teleport/sprint in custody now activates it.
 - Fixed a crash caused by hands sometimes being invalid in the 'hand in wall' check.
 - (Possibly?) Fixed a crash that can sometimes occur when a heist starts related to 'playerhandstateweapon'.
 ## Improvements

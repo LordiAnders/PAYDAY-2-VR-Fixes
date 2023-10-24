@@ -47,6 +47,10 @@
 	{
         "hook_id" : "lib/units/beings/player/states/vr/playerstandardvr",
         "script_path" : "lua/handmelee.lua"
+    },
+	{
+        "hook_id" : "lib/player_actions/skills/playeractionstockholmsyndrometrade",
+        "script_path" : "lua/playeractionstockholmsyndrometrade.lua"
     }
     ]
 }
