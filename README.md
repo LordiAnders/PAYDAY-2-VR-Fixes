@@ -15,6 +15,8 @@ Bunch of fixes for the mostly neglected VR version of PAYDAY 2.
 - Fixed akimbo weapons playing empty magazine sounds/animations before they are completely empty.
 - Fixed weapon skins not applying correctly to held/dropped magazines.
 - Removed hitpoint variable from the Tactical Flashlight melee that made it difficult to hit enemies.
+- The game no longer automatically attempts to do a weapon butt melee attack when turning.
+- Fixed the Counterstrike skill not working with VR melee.
 - Fixed a crash caused by hands sometimes being invalid in the 'hand in wall' check.
 - (Possibly?) Fixed a crash that can sometimes occur when a heist starts related to 'playerhandstateweapon'.
 ## Improvements
@@ -22,7 +24,6 @@ Bunch of fixes for the mostly neglected VR version of PAYDAY 2.
 - Weapons with underbarrel modes now support reload timelines so they can be reloaded correctly.
 - Held and dropped magazines that have bullets in them are now affected by your current ammo count.
 - Removed annoying grip points on the LMGs that make them hard to two-hand properly, they now only have 1 grip point.
-- The game no longer automatically attempts a weapon butt melee attack when turning.
 
 ## Underbarrel weapons
 Overkill had apparently tried to get underbarrel weapons working in VR.
