@@ -22,6 +22,7 @@ Bunch of fixes for the mostly neglected VR version of PAYDAY 2.
 - Weapons with underbarrel modes now support reload timelines so they can be reloaded correctly.
 - Held and dropped magazines that have bullets in them are now affected by your current ammo count.
 - Removed annoying grip points on the LMGs that make them hard to two-hand properly, they now only have 1 grip point.
+- The game no longer automatically attempts a weapon butt melee attack when turning.
 
 ## Underbarrel weapons
 Overkill had apparently tried to get underbarrel weapons working in VR.
