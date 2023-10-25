@@ -36,8 +36,8 @@ function PlayerStandardVR:_start_action_reload(t)
 		if weapon:reload_exit_expire_t() then
 			reload_time = reload_time + weapon:reload_exit_expire_t(not weapon:started_reload_empty()) / speed_multiplier
 		end
-
-		local tweak = weapon:weapon_tweak_data()
+		
+		local tweak = weapon:ammo_base():weapon_tweak_data()
 
 		if weapon:clip_empty() then
 			reload_time = reload_time + (tweak.timers.reload_empty or weapon:reload_expire_t() or 2.6) / speed_multiplier
