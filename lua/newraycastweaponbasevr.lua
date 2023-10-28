@@ -30,7 +30,7 @@ Hooks:PostHook(NewRaycastWeaponBase,"underbarrel_toggle","VRTweakDataFixes_Rayca
 end)
 
 --Records the ammo count during reload actions to track how many bullets should be visible in magazines, see cosmeticweaponbase.lua
---This is set before reloading starts since otherwise checking reload_amount when the magazine is spawned would cause the magazine to always be partially filled since magazines are spawned after a delay
+--This is set using a variable before reloading starts since otherwise checking reload_amount when the magazine is spawned would cause the magazine to always be partially filled since magazines are spawned after a delay
 local function VRTweakFixes_StartReload(self)
 	self.vrfixesammoreloadcount = managers.player:player_unit():movement():current_state():_current_reload_amount() or self:get_ammo_total()
 end
@@ -38,8 +38,6 @@ local function VRTweakFixes_FinishReload(self)
 	self.vrfixesammoreloadcount = nil
 end
 Hooks:PreHook(NewRaycastWeaponBaseVR,"start_reload","VRTweakFixes_Magazine_BulletsObjects",VRTweakFixes_StartReload)
---Hooks:PreHook(NewRaycastWeaponBaseVR,"spawn_belt_magazine_unit","VRTweakFixes_Magazine_BulletsObjects",VRTweakFixes_StartReload)
---Hooks:PostHook(NewRaycastWeaponBaseVR,"spawn_belt_magazine_unit","VRTweakFixes_Magazine_BulletsObjects",VRTweakFixes_FinishReload)
 Hooks:PostHook(NewRaycastWeaponBaseVR,"finish_reload","VRTweakFixes_Magazine_BulletsObjects",VRTweakFixes_FinishReload)
 
 Hooks:PostHook(NewRaycastWeaponBaseVR,"start_reload","VRTweakFixes_AnimationEffects_Workaround",function(self)
@@ -65,12 +63,12 @@ end)
 
 --Allows attaching additional units to a held magazine by setting reload_part_addon in weapon reload timeline. Used for ECP held magazine and hk51b magazine
 --Also allows using a different part as held magazine if reload_part_override is set in the reload timeline. Used for certain weapons so they display the correct (modded) ammo when held
---See weaponfactorymanager.lua which overrides the hardcoded "magazine" part lookup
+--See weaponfactorymanager.lua which overrides the hardcoded "magazine" part lookup in spawn_magazine_unit()
 
 local old_spawnbeltmagazine = NewRaycastWeaponBaseVR.spawn_belt_magazine_unit
 function NewRaycastWeaponBaseVR:spawn_belt_magazine_unit(pos)
 	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override or nil
-	self.vrfixesammoreloadcount = managers.player:player_unit():movement():current_state():_current_reload_amount() or self:get_ammo_total()
+	VRTweakFixes_StartReload(self)
 
 	local mag_unit = old_spawnbeltmagazine(self,pos)
 

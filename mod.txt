@@ -1,9 +1,9 @@
 {
-    "name" : "VR Fixes",
+	"name" : "VR Fixes",
 	"description" : "Bunch of fixes for the VR version of the game.",
-    "author" : "LordiAnders",
+	"author" : "LordiAnders",
 	"color" : "0.5 0.25 0.9",
-    "version" : "1",
+	"version" : "1",
 	"blt_version" : 2,
 	"hooks" : [
 		{

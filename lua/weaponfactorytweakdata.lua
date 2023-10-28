@@ -3,7 +3,7 @@ Hooks:PostHook(WeaponFactoryTweakData,"init","VRTweakDataFixes_FactoryTweakFixes
 	self.wpn_fps_pis_x_rage.override.wpn_fps_pis_rage_body_standard.animations.reload = "reload"
 	self.wpn_fps_pis_x_rage.override.wpn_fps_pis_rage_body_smooth.animations.reload = "reload"
 	
-	self.parts.wpn_fps_pis_x_type54_underbarrel.animations.bipod_reload = "reload_not_empty" --Akimbo Káng Arms Model 54 underbarrel reload
+	self.parts.wpn_fps_pis_x_type54_underbarrel.animations.bipod_reload = "reload_not_empty" --Akimbo Káng Arms Model 54 (pd2_dlc_tawp) underbarrel reload
 
 	--Several parts were missing bullet object definitions despite existing in their models
 	--Technically not VR specific fixes, these could be noticed in desktop as well

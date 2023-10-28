@@ -1,6 +1,10 @@
 # PAYDAY-2-VR-Fixes
 Bunch of fixes for the mostly neglected VR version of PAYDAY 2.
 
+This is similar to the already existing '[Unofficial VR Patch](https://modworkshop.net/mod/27138)' by Zdann that was discontinued.
+
+This mod accomplishes the same fixes as Zdann's mod and shouldn't be used together or they might conflict.
+
 ## Fixes
 - Added proper reload timelines (animations and sounds) for all weapons that were missing them or had broken timelines.
 - Improved reload timelines on some weapons that had little animation or to reduce clipping.
@@ -17,13 +21,14 @@ Bunch of fixes for the mostly neglected VR version of PAYDAY 2.
 - Removed hitpoint variable from the Tactical Flashlight melee that made it difficult to hit enemies.
 - Fixed the Counterstrike skill not working with VR melee.
 - Fixed the Stockholm Syndrome skill not working. Pressing teleport/sprint in custody now activates it.
-- Fixed the ammo counter on the VR belt eventually moving outside the reload panel over time.
+- Fixed the ammo counter on the VR belt slowly moving outside the reload panel over time.
+- Fixed a few magazines lacking bullet_object definitions despite existing in their models, so the bullets in the magazine update properly.
 - Fixed a crash caused by hands sometimes being invalid in the 'hand in wall' check.
-- (Possibly?) Fixed a crash that can sometimes occur when a heist starts, with the crash log mentioning "[string "lib/units/beings/player/states/vr/hand/player..."]:132".
+- Fixed a crash that can sometimes occur when a heist starts after the black intro screen.
 ## Improvements
 - Unlocked all weapons that were 'VR Locked' as they are now all usable and reload correctly.
 - Weapons with underbarrel modes now support reload timelines so they can be reloaded correctly.
-- Held and dropped magazines that have bullets in them are now affected by your current ammo count.
+- Held and dropped magazines that have bullets in them now display the actual amount of ammo they have in them.
 - Removed annoying grip points on the LMGs that make them hard to two-hand properly, they now only have 1 grip point.
 - The game no longer automatically attempts to do a weapon butt melee attack when turning.
 
@@ -34,5 +39,9 @@ As of U240.2 you can toggle underbarrel modes by using the "fire mode" binding, 
 
 Additionally, underbarrel modes can only be toggled while you're not "aiming down sights" (weapon held at eye level and looking straight).
 
+This mod implements reload timelines for underbarrel modes so they have proper reload animations and sounds, instead of sharing the same reload as the standard fire mode.
+
 ## Installation
+Only needs SuperBLT and PAYDAY 2 VR.
+
 Drop into BLT mods folder (PAYDAY 2/mods).

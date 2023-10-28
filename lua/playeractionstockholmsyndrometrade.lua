@@ -1,4 +1,5 @@
 --Fix Stockholm Syndrome skill not working with VR controls
+--Original function does not check using VR specific controls. "jump" does not exist for VR input
 
 function StockholmSyndromeTradeAction:update(t, dt)
 	local auto_activate = managers.groupai:state():num_alive_criminals() <= 0

@@ -2,12 +2,12 @@
 	New variables added:
 		reload_part_override = "string" --Allows overriding the hardcoded "magazine" part when spawning magazines. Requires custom_mag_unit to be nil, otherwise custom_mag_unit takes priority
 		reload_part_override_hidden = {table} --List of objects in the spawned magazine that should be invisible
-		reload_part_addon = "string" or {table} --Spawns additional magazines that is attached to the regular one. Used for magazines that are made of multiple parts
+		reload_part_addon = "string" or {table} --Spawns additional units that are attached to the magazine. Used for magazines that are made of multiple parts
 		reload_animation_effect = {table} --Plays the effect when reloading but only if the part is valid. Workaround for ms3gl exhaust effect with exclusive set equipped
 	
 	Notes:
 		magazine_offsets:
-			weapon_offset: Overrides magazine insertion point instead of looking up location of magazine part on the weapon
+			weapon_offset: Overrides magazine insertion point instead of dynamically getting the location of the "magazine" part on the weapon
 		
 		visible:
 			parts: Parts can be set as boolean instead of table of objects to hide the whole part. Must be table of objects on hk51b or it breaks bullet belt physics
@@ -25,11 +25,6 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	--Little Friend 7.62 - Underbarrel mode (pd2_dlc_chico)
 	self.weapon_offsets.weapons.contraband_m203 = self.weapon_offsets.weapons.contraband
 	self.weapon_assist.weapons.contraband_m203 = self.weapon_assist.weapons.contraband
-	--[[self.magazine_offsets.contraband_m203 = {
-		position = Vector3(1.5, 0, 2),
-		rotation = Rotation(-45, 12, -20),
-		weapon_offset = Vector3(0,26,1)
-	}]]
 	self.magazine_offsets.contraband_m203 = {
 		position = Vector3(9.5, 14, 8),
 		rotation = Rotation(-45, 12, -20),
@@ -121,18 +116,12 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	--KETCHNOV Byk-1 - Underbarrel mode (pd2_dlc_sawp)
 	self.weapon_offsets.weapons.groza_underbarrel = self.weapon_offsets.weapons.groza
 	self.weapon_assist.weapons.groza_underbarrel = self.weapon_assist.weapons.groza
-	--[[self.magazine_offsets.groza_underbarrel = {
-		position = Vector3(1.5, 0, 2),
-		rotation = Rotation(-45, 12, -20),
-		weapon_offset = Vector3(0,26,0)
-	}]]
 	self.magazine_offsets.groza_underbarrel = {
 		position = Vector3(-8.5, -5, 8),
 		rotation = Rotation(-45, 12, -20),
 		weapon_offset = Vector3(0,26,0)
 	}
 	self.reload_timelines.groza_underbarrel = {
-		--custom_mag_unit = "units/pd2_dlc_gage_assault/weapons/wpn_fps_gre_m79_pts/wpn_fps_gre_m79_grenade",
 		reload_part_type = "underbarrel",
 		reload_part_override = "underbarrel",
 		reload_part_override_hidden = {
@@ -365,10 +354,6 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 			{
 				time = 0.02,
 				pos = Vector3(0,-17,0)
-				--[[effect = {
-					object = "a_upper",
-					name = "effects/payday2/particles/weapons/shells/shell_40mm"
-				}]]
 			}
 		},
 		finish = {

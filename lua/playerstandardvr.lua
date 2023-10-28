@@ -1,4 +1,4 @@
---Fix Counterstrike skill not working with VR melee
+--Fixes Counterstrike skill not working with VR melee
 local __player_standard_in_melee = PlayerStandard.in_melee
 
 function PlayerStandardVR:in_melee()

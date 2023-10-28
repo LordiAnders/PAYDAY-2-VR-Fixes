@@ -1,4 +1,4 @@
---Overrides the function used in spawn_magazine_unit so a different part can be returned other than the hardcoded "magazine"
+--Used for overriding the hardcoded "magazine" part getter in spawn_magazine_unit() so a different part can be returned other than the hardcoded "magazine"
 
 local old_partstypeperkfunction = WeaponFactoryManager.get_parts_from_weapon_by_type_or_perk
 
