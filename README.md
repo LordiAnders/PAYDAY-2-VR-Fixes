@@ -1,7 +1,7 @@
 # PAYDAY-2-VR-Fixes
-Bunch of fixes for the mostly neglected VR version of PAYDAY 2.
+Bunch of fixes for the mostly neglected VR version of PAYDAY 2, including fixing many weapons lacking animations and sounds when reloading, as well as fixing a few pesky crashes and other annoyances.
 
-This is similar to the already existing '[Unofficial VR Patch](https://modworkshop.net/mod/27138)' by Zdann that was discontinued.
+This is similar to the already existing '[Unofficial VR Patch](https://modworkshop.net/mod/27138)' by Zdann that was unfortunately discontinued.
 
 This mod accomplishes the same fixes as Zdann's mod and shouldn't be used together or they might conflict.
 
@@ -42,6 +42,6 @@ Additionally, underbarrel modes can only be toggled while you're not "aiming dow
 This mod implements reload timelines for underbarrel modes so they have proper reload animations and sounds, instead of sharing the same reload as the standard fire mode.
 
 ## Installation
-Only needs SuperBLT and PAYDAY 2 VR.
+Only needs [SuperBLT](https://superblt.znix.xyz/) and PAYDAY 2 VR.
 
 Drop into BLT mods folder (PAYDAY 2/mods).
