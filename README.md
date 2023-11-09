@@ -26,7 +26,7 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed a crash caused by hands sometimes being invalid in the 'hand in wall' check.
 - Fixed a crash that can sometimes occur when a heist starts after the black intro screen.
 ## Heist Fixes
-- Fixed ladders on Big Bank having bad exit points, causing the player to go out of bounds or fall to their death.
+- Fixed ladders on Big Bank, Counterfeit and Election Day day 2 (warehouse) having bad exit points, causing the player to clip through walls or fall to their death.
 ## Improvements
 - Unlocked all weapons that were 'VR Locked' as they are now all usable and reload correctly.
 - Weapons with underbarrel modes now support reload timelines so they can be reloaded correctly.

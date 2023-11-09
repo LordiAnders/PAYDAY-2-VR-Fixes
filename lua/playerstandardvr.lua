@@ -11,6 +11,22 @@ function PlayerStandardVR:in_melee()
 	return __player_standard_in_melee(self)
 end
 
+local __player_standard_discharge_melee = PlayerStandard.discharge_melee
+
+function PlayerStandardVR:discharge_melee()
+	local melee_hand = self._unit:hand():get_active_hand_id("melee")
+	
+	if melee_hand then
+		local hand_unit = self._unit:hand():hand_unit(melee_hand):melee()
+		
+		hand_unit._next_hit_t = t + tweak_data.blackmarket.melee_weapons[hand_unit._entry].expire_t
+		hand_unit._next_full_hit_t = hand_unit._next_hit_t
+		hand_unit._charge_start_t = nil
+	end
+	
+	return __player_standard_discharge_melee(self)
+end
+
 --These functions needed to be modified for underbarrels to work as intended. The unmodified functions do not check ammo using ammo_base()
 --This causes the belt to display ammo for underbarrels incorrectly, as well as allowing underbarrels to be reloaded instantly before the reload is finished
 
