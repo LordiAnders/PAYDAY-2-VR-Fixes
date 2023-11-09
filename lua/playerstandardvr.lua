@@ -19,7 +19,7 @@ function PlayerStandardVR:discharge_melee()
 	if melee_hand then
 		local hand_unit = self._unit:hand():hand_unit(melee_hand):melee()
 		
-		hand_unit._next_hit_t = t + tweak_data.blackmarket.melee_weapons[hand_unit._entry].expire_t
+		hand_unit._next_hit_t = TimerManager:game():time() + tweak_data.blackmarket.melee_weapons[hand_unit._entry].expire_t
 		hand_unit._next_full_hit_t = hand_unit._next_hit_t
 		hand_unit._charge_start_t = nil
 	end
