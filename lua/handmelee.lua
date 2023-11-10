@@ -1,8 +1,12 @@
---Tries to prevent an involuntary melee attack when snap turning
+--Tries to prevent an involuntary melee attacks in some instances
 --This only prevents accidental weapon butt melee attacks, melee weapons behave completely differently for some reason when held in the hand
---This *can* sometimes cause actual melee attacks to fail if the player tries to melee while turning at the same time. Tweaking the time below changes how long melee is blocked after turning
+--This *can* sometimes cause actual melee attacks to fail if the player tries to melee while turning or touching the belt at the same time. Tweaking the timers below changes how long melee gets blocked
 
 vrfixes_hit_rotate_t = 0
+
+local function SetMeleeHitRotateT(self,time)
+	vrfixes_hit_rotate_t = TimerManager:game():time() + time
+end
 
 if RequiredScript == "lib/units/beings/player/handmelee" then
 
@@ -14,8 +18,14 @@ end)
 
 elseif RequiredScript == "lib/units/beings/player/states/vr/playerstandardvr" then
 
-Hooks:PreHook(PlayerStandardVR,"_rotate_player","VRFixes_OnRotate",function(self)
-	vrfixes_hit_rotate_t = TimerManager:game():time() + 0.04
+Hooks:PreHook(PlayerStandardVR,"_rotate_player","VRFixes_HandMelee_OnRotate",function(self)
+	SetMeleeHitRotateT(self,0.04)
+end)
+
+elseif RequiredScript == "lib/units/beings/player/states/vr/hand/playerhandstateweapon" then
+
+Hooks:PreHook(PlayerHandStateWeapon,"_link_weapon","VRFixes_HandMelee_LinkWeapon",function(self)
+	SetMeleeHitRotateT(self,0.09)
 end)
 
 end

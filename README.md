@@ -23,6 +23,7 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed the Stockholm Syndrome skill not working. Pressing teleport/sprint in custody now activates it.
 - Fixed the ammo counter on the VR belt slowly moving outside the reload panel over time.
 - Fixed a few magazines lacking bullet_object definitions despite existing in their models, so the bullets in the magazine update properly.
+- Fixed random involuntary weapon butt melee attacks when switching weapons.
 - Fixed a crash caused by hands sometimes being invalid in the 'hand in wall' check.
 - Fixed a crash that can sometimes occur when a heist starts after the black intro screen.
 ## Heist Fixes

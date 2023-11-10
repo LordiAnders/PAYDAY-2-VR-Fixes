@@ -47,6 +47,10 @@
 			"script_path" : "lua/handmelee.lua"
 		},
 		{
+			"hook_id" : "lib/units/beings/player/states/vr/hand/playerhandstateweapon",
+			"script_path" : "lua/handmelee.lua"
+		},
+		{
 			"hook_id" : "lib/units/beings/player/states/vr/playerstandardvr",
 			"script_path" : "lua/handmelee.lua"
 		},
