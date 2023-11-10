@@ -1327,29 +1327,29 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 					{
 						anim_group = "reload",
 						to = 0.75,
-						from = 0.55,
+						from = 0.6,
 						part = "magazine"
 					},
 					{
 						anim_group = "reload",
 						to = 0.75,
-						from = 0.55,
+						from = 0.6,
 						part = "barrel"
 					}
 				}
 			},
 			{
-				time = 0.99,
+				time = 0.6,
 				sound = "wp_tcg2_reload_barrel_close",
 				anims = {
 					{
 						anim_group = "reload",
-						from = 0.85,
+						from = 0.95,
 						part = "magazine"
 					},
 					{
 						anim_group = "reload",
-						from = 0.85,
+						from = 0.95,
 						part = "barrel"
 					}
 				}
