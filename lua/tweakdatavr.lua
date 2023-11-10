@@ -1623,7 +1623,10 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 
 	self.weapon_assist.weapons.hk21.points[2] = nil
 	self.weapon_assist.weapons.rpk.points[2] = nil
-	self.weapon_assist.weapons.mg42.points[2] = nil
+	self.weapon_assist.weapons.mg42 = {
+		grip = "idle_wpn",
+		position = Vector3(-1,35,6)
+	}
 	self.weapon_assist.weapons.m249 = {
 		grip = "idle_wpn",
 		position = Vector3(-2,30,2)
