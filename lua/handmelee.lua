@@ -1,4 +1,4 @@
---Tries to prevent an involuntary melee attacks in some instances
+--Tries to prevent an involuntary melee attack in some instances
 --This only prevents accidental weapon butt melee attacks, melee weapons behave completely differently for some reason when held in the hand
 --This *can* sometimes cause actual melee attacks to fail if the player tries to melee while turning or touching the belt at the same time. Tweaking the timers below changes how long melee gets blocked
 
