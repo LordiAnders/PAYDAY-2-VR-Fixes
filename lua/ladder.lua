@@ -3,14 +3,14 @@
 --There might be better ways of identifying ladders, but it has to be compatible both as a client and host without being mutually exclusive
 local ladder_adjusters = {
 	["big"] = { --Big Bank
-		["Vector3(-950, -1299, -1500)"] = {top = Vector3(0,230,-310),bottom = Vector3(0,0,120)}, --elevator (103575)
-		["Vector3(-229.403, -3573.44, 1952.14)"] = {top = Vector3(0,89,-90)} --crane bottom ladder (105631)
+		["Vector3(-950, -1299, -1500)"] = {top = Vector3(-10,190,-315),bottom = Vector3(0,0,120)}, --elevator (103575)
+		["Vector3(-229.403, -3573.44, 1952.14)"] = {top = Vector3(-90,89,-110)} --crane bottom ladder (105631)
 	},
 	["election_day_2"] = { --Election Day day 2
 		["Vector3(-2193, -822, 0.000232458)"] = {top = Vector3(115,77,-48)} --warehouse right side (102685)
 	},
 	["pal"] = { --Counterfeit
-		["Vector3(-735, -77, -398)"] = {top = Vector3(-173,0,0)} --sewer exit behind wall (101111)
+		["Vector3(-735, -77, -398)"] = {top = Vector3(-90,70,0)} --sewer exit behind wall (101111)
 	}
 }
 
