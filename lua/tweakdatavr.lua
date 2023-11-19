@@ -1054,8 +1054,10 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	self.weapon_offsets.weapons.x_vityaz.position = Vector3(0,3,0)
 	self.reload_timelines.vityaz.start[1].sound = "wp_vityaz_mag_grab_out"
 	self.reload_timelines.vityaz.finish[1].sound = "wp_vityaz_mag_slide_in"
-	self.reload_timelines.x_vityaz.start[1].sound = "wp_vityaz_mag_grab_out"
-	self.reload_timelines.x_vityaz.finish[1].sound = "wp_vityaz_mag_slide_in"
+	self.reload_timelines.vityaz.finish[3].sound = "wp_vityaz_mag_lever_release"
+	self.reload_timelines.x_vityaz.start[1].sound = "wp_vityaz_x_mag_slide_out"
+	self.reload_timelines.x_vityaz.finish[1].sound = "wp_vityaz_x_mag_slide_in"
+	self.reload_timelines.x_vityaz.finish[3].sound = "wp_vityaz_x_lever_release"
 
 	--Wasp-DS (pd2_dlc_lawp)
 	self.weapon_offsets.weapons.fmg9 = {
