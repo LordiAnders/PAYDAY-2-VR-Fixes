@@ -26,6 +26,7 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed the Counterstrike skill not working with VR melee.
 - Fixed the Stockholm Syndrome skill not working. Pressing teleport/sprint in custody now activates it.
 ### Interface
+- Fixed resizing panels on the VR belt when editing the layout not working.
 - Fixed the ammo counter on the VR belt slowly moving outside the reload panel over time.
 - Fixed reload timer and belt not accounting for weapons in underbarrel modes.
 ### Heists
