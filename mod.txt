@@ -69,6 +69,14 @@
 		{
 			"hook_id" : "lib/managers/menu/vrcustomizationgui",
 			"script_path" : "lua/vrcustomizationgui.lua"
+		},
+		{
+			"hook_id" : "lib/units/cameras/fpcameraplayerbase",
+			"script_path" : "lua/fpcameraplayerbase.lua"
+		},
+		{
+			"hook_id" : "core/lib/managers/mission/coremissionscriptelement",
+			"script_path" : "lua/coremissionscriptelement.lua"
 		}
     ]
 }
