@@ -1428,6 +1428,11 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 			}
 		}
 	}
+	
+	--Akimbo Swedish K (pd2_dlc1)
+	self.weapon_offsets.weapons.x_m45 = {
+		position = Vector3(-0.1,4,1)
+	}
 
 	--Akimbo Matever .357 (pd2_dlc_arena)
 	self.weapon_hidden.x_2006m = self.weapon_hidden.mateba
