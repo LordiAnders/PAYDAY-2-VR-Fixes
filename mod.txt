@@ -3,7 +3,7 @@
 	"description" : "Bunch of fixes for the VR version of the game.",
 	"author" : "LordiAnders",
 	"color" : "0.5 0.25 0.9",
-	"version" : "2",
+	"version" : "3",
 	"blt_version" : 2,
 	"hooks" : [
 		{
