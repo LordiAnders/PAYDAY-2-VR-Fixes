@@ -71,8 +71,8 @@
 			"script_path" : "lua/vrcustomizationgui.lua"
 		},
 		{
-			"hook_id" : "lib/units/cameras/fpcameraplayerbase",
-			"script_path" : "lua/fpcameraplayerbase.lua"
+			"hook_id" : "lib/utils/vrfadeout",
+			"script_path" : "lua/vrfadeout.lua"
 		},
 		{
 			"hook_id" : "core/lib/managers/mission/coremissionscriptelement",
