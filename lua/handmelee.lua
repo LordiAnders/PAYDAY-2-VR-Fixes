@@ -28,4 +28,10 @@ Hooks:PreHook(PlayerHandStateWeapon,"_link_weapon","VRFixes_HandMelee_LinkWeapon
 	SetMeleeHitRotateT(self,0.09)
 end)
 
+elseif RequiredScript == "lib/units/beings/player/states/vr/hand/playerhandstateakimbo" then
+
+Hooks:PreHook(PlayerHandStateAkimbo,"_link_weapon","VRFixes_HandMelee_LinkWeapon",function(self)
+	SetMeleeHitRotateT(self,0.09)
+end)
+
 end
