@@ -1,8 +1,6 @@
 --Attempts to get the magazine unit from the original function and modifies the bullet objects on it, as well as reapplying cosmetic data, since it appears to be broken in vanilla
 --Also adjusts its objects' visibility if reload_part_type_hidden is set in reload timeline, used for underbarrels to display the correct grenade when held
 
-local old_magazine_unit_function = NewRaycastWeaponBase.spawn_magazine_unit
-
 local material_textures = {
 	pattern = "diffuse_layer0_texture",
 	sticker = "diffuse_layer3_texture",
@@ -17,7 +15,7 @@ local material_variables = {
 	pattern_tweak = "pattern_tweak"
 }
 
-Hooks:PostHook(NewRaycastWeaponBase,"spawn_magazine_unit","VRFixes_Magazine_Cosmeticweaponbase",function(self, pos, rot, hide_bullets)
+Hooks:PostHook(NewRaycastWeaponBase,"spawn_magazine_unit","VRFixes_Magazine_Cosmeticweaponbase",function(self)
 	local mag_unit = Hooks:GetReturn()
 	
 	if not mag_unit then return end
