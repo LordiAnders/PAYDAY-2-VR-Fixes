@@ -65,12 +65,12 @@ end)
 --Also allows using a different part as held magazine if reload_part_override is set in the reload timeline. Used for certain weapons so they display the correct (modded) ammo when held
 --See weaponfactorymanager.lua which overrides the hardcoded "magazine" part lookup in spawn_magazine_unit()
 
-local old_spawnbeltmagazine = NewRaycastWeaponBaseVR.spawn_belt_magazine_unit
-function NewRaycastWeaponBaseVR:spawn_belt_magazine_unit(pos)
+Hooks:PreHook(NewRaycastWeaponBaseVR,"spawn_belt_magazine_unit","VRFixes_Belt_Magazine_Override",function(self)
 	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override or nil
 	VRTweakFixes_StartReload(self)
-
-	local mag_unit = old_spawnbeltmagazine(self,pos)
+end)
+Hooks:PostHook(NewRaycastWeaponBaseVR,"spawn_belt_magazine_unit","VRFixes_Belt_Magazine_Addons",function(self,pos)
+	local mag_unit = Hooks:GetReturn()
 
 	local reload_addon = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_addon or nil
 	if reload_addon then
@@ -92,7 +92,7 @@ function NewRaycastWeaponBaseVR:spawn_belt_magazine_unit(pos)
 	vrtweaksfixes_customparttype = nil
 
 	return mag_unit
-end
+end)
 
 Hooks:PreHook(NewRaycastWeaponBase,"drop_magazine_object","VRTweakFixes_Magazine_Override",function(self)
 	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override or nil

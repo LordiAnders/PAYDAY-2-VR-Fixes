@@ -1,7 +1,7 @@
 --Fix Stockholm Syndrome skill not working with VR controls
 --Original function does not check using VR specific controls. "jump" does not exist for VR input
 
-function StockholmSyndromeTradeAction:update(t, dt)
+Hooks:OverrideFunction(StockholmSyndromeTradeAction,"update",function(self, t, dt)
 	local auto_activate = managers.groupai:state():num_alive_criminals() <= 0
 	local allowed, feedback_idx = StockholmSyndromeTradeAction.is_allowed()
 
@@ -44,4 +44,4 @@ function StockholmSyndromeTradeAction:update(t, dt)
 	self._last_can_use = allowed
 
 	return self._quit
-end
+end)

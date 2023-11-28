@@ -22,7 +22,7 @@ end)
 --These functions needed to be modified for underbarrels to work as intended. The unmodified functions do not check ammo using ammo_base()
 --This causes the belt to display ammo for underbarrels incorrectly, as well as allowing underbarrels to be reloaded instantly before the reload is finished
 
-function PlayerStandardVR:_start_action_reload(t)
+Hooks:OverrideFunction(PlayerStandardVR,"_start_action_reload",function(self,t)
 	local weapon = self._equipped_unit:base()
 
 	if weapon and weapon:can_reload() then
@@ -81,9 +81,9 @@ function PlayerStandardVR:_start_action_reload(t)
 
 		managers.hud:set_reload_visible(true)
 	end
-end
+end)
 
-function PlayerStandardVR:_current_reload_amount()
+Hooks:OverrideFunction(PlayerStandardVR,"_current_reload_amount",function(self)
 	if self._state_data.reload_expire_t then
 		local t = TimerManager:game():time()
 		local weapon = self._equipped_unit:base()
@@ -94,4 +94,4 @@ function PlayerStandardVR:_current_reload_amount()
 
 		return math.floor((max_ammo - weapon:ammo_base():get_ammo_remaining_in_clip()) * ratio) + weapon:ammo_base():get_ammo_remaining_in_clip()
 	end
-end
+end)

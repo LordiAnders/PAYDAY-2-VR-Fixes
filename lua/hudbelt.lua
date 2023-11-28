@@ -7,7 +7,7 @@ local function make_fine_text(text)
 	--text:set_position(math.round(text:x()), math.round(text:y()))
 end
 
-function HUDBeltInteractionReload:_reload_animate(o, time, clip_start, clip_full)
+Hooks:OverrideFunction(HUDBeltInteractionReload,"_reload_animate",function(self, o, time, clip_start, clip_full)
 	local ammo_text = self._ammo_text
 
 	ammo_text:set_text(tostring(clip_start) .. "/" .. tostring(clip_full))
@@ -35,4 +35,4 @@ function HUDBeltInteractionReload:_reload_animate(o, time, clip_start, clip_full
 	end
 
 	self._bg:set_color(Color.black)
-end
+end)

@@ -1,4 +1,4 @@
-function VRBeltCustomization:set_back_button_enabled(enabled)
+Hooks:OverrideFunction(VRBeltCustomization,"set_back_button_enabled",function(self,enabled)
 	if self._back_button_enabled == enabled then
 		return
 	end
@@ -19,4 +19,4 @@ function VRBeltCustomization:set_back_button_enabled(enabled)
 	end
 
 	self._back_button_enabled = enabled
-end
+end)

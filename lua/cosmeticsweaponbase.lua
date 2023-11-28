@@ -17,8 +17,8 @@ local material_variables = {
 	pattern_tweak = "pattern_tweak"
 }
 
-function NewRaycastWeaponBase:spawn_magazine_unit(pos, rot, hide_bullets)
-	local mag_unit = old_magazine_unit_function(self,pos,rot,hide_bullets) --Get the mag_unit using the original function, then we just modify the unit
+Hooks:PostHook(NewRaycastWeaponBase,"spawn_magazine_unit","VRFixes_Magazine_Cosmeticweaponbase",function(self, pos, rot, hide_bullets)
+	local mag_unit = Hooks:GetReturn()
 	
 	if not mag_unit then return end
 
@@ -27,13 +27,13 @@ function NewRaycastWeaponBase:spawn_magazine_unit(pos, rot, hide_bullets)
 	local mag_id = mag_list and mag_list[1]
 
 	if not mag_id then
-		return mag_unit
+		return
 	end
 
 	mag_data = managers.weapon_factory:get_part_data_by_part_id_from_weapon(mag_id, self._factory_id, self._blueprint)
 
 	if not mag_data then
-		return mag_unit
+		return
 	end
 
 	if self.vrfixesammoreloadcount then
@@ -129,4 +129,4 @@ function NewRaycastWeaponBase:spawn_magazine_unit(pos, rot, hide_bullets)
 	end
 
 	return mag_unit
-end
+end)
