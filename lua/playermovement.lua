@@ -1,3 +1,3 @@
-Hooks:PreHook(PlayerMovement,"set_ghost_position","VRFixes_set_ghost_position",function(self,pos,unit_position)
-	self._m_pos = unit_position and unit_position or pos
+Hooks:PreHook(PlayerMovement,"warp_to","VRFixes_warp_to",function(self,pos)
+	mvector3.set(self._m_pos,pos)
 end)
