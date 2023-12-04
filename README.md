@@ -31,10 +31,10 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed reload timer and belt not accounting for weapons in underbarrel modes.
 ### Heists
 - Fixed ladders on Big Bank, Counterfeit and Election Day day 2 (warehouse) having bad exit points, causing the player to clip through walls or fall to their death.
-- Fixed not getting teleported to the next area properly on Border Crossing.
 ### Other
 - Fixed involuntary weapon butt melee attacks when snap turning.
 - Fixed random involuntary weapon butt melee attacks when switching weapons.
+- Fixed the player not getting teleported when falling out of bounds or being teleported by the map when using the 'Collision Teleport' setting. (e.g Border Crossing)
 - Fixed a crash caused by hands sometimes being invalid in the 'hand in wall' check.
 - Fixed a crash that can sometimes occur when a heist starts after the black intro screen.
 ### Improvements
