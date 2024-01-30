@@ -23,6 +23,7 @@
 		{"hook_id" : "lib/managers/hud/vr/hudbelt","script_path" : "lua/hudbelt.lua"},
 		{"hook_id" : "lib/units/props/ladder","script_path" : "lua/ladder.lua"},
 		{"hook_id" : "lib/managers/menu/vrcustomizationgui","script_path" : "lua/vrcustomizationgui.lua"},
-		{"hook_id" : "lib/units/beings/player/playermovement","script_path" : "lua/playermovement.lua"}
+		{"hook_id" : "lib/units/beings/player/playermovement","script_path" : "lua/playermovement.lua"},
+		{"hook_id" : "lib/managers/hud/vr/hudteammatevr","script_path" : "lua/hudteammatevr.lua"}
     ]
 }
