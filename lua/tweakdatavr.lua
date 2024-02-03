@@ -1179,8 +1179,12 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	self.reload_timelines.rsh12.finish[1].visible.parts.lower_reciever = rsh12_bullets
 	
 	--Káng Arms Model 54 (pd2_dlc_tawp)
+	self.reload_timelines.type54.start[1].pos = Vector3(0,-2,-10)
 	self.reload_timelines.type54.start[1].sound = "wp_type54_mag_out"
+	self.reload_timelines.type54.finish[1].pos = Vector3(0,-2,-20)
 	self.reload_timelines.type54.finish[1].sound = "wp_type54_mag_in"
+	self.reload_timelines.type54.finish[2].pos = Vector3(0,-2,-10)
+	self.reload_timelines.type54.finish[3].pos = Vector3(0,-2,-10)
 	self.reload_timelines.type54.finish[4].sound = "wp_type54_mantle_forward"
 	self.reload_timelines.x_type54 = self.reload_timelines.type54
 	
