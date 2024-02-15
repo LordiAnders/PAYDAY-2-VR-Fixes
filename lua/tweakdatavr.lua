@@ -325,6 +325,7 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 		}
 	}
 
+	--Basilisk 3V (pd2_dlc_pxp1)
 	self.magazine_offsets.ms3gl = {
 		position = Vector3(2.5, 1, 2),
 		rotation = Rotation(-45, 12, -20),
