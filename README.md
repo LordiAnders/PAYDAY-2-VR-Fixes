@@ -26,11 +26,14 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed the Counterstrike skill not working with VR melee.
 - Fixed the Stockholm Syndrome skill not working. Pressing teleport/sprint in custody now activates it.
 ### Interface
+- Added grab functionality to the scroll bar when viewing the mod list of lobbies, it can now be scrolled by using the VR laser pointer.
 - Fixed not being able to resize panels on the VR belt when editing the layout.
 - Fixed the ammo counter on the VR belt slowly moving outside the reload panel over time.
 - Fixed reload timer and belt not accounting for weapons in underbarrel modes.
+- Restored the intended font size for the ammo panel.
 ### Heists
 - Fixed ladders on Big Bank, Counterfeit and Election Day day 2 (warehouse) having bad exit points, causing the player to clip through walls or fall to their death.
+- The collision fade out effect from getting close to walls is temporarily disabled when using the turrets in Midland Ranch and Lost in Transit.
 ### Other
 - Fixed involuntary weapon butt melee attacks when snap turning.
 - Fixed random involuntary weapon butt melee attacks when switching weapons.
