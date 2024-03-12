@@ -390,80 +390,80 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	
 	--Kahn .357 (pd2_dlc_pxp2)
 	self.weapon_offsets.weapons.korth.position = Vector3(-0.5,1,3)
-	self.reload_timelines.korth.start = {
-		{
-			time = 0,
-			sound = "wp_foley_generic_lever_pull",
-			rot = Rotation()
-		},
-		{
-			time = 0.03,
-			rot = Rotation(0,0,-5)
-		},
-		{
-			time = 0.1,
-			sound = "wp_korth_reload_mag_out",
-			rot = Rotation(0,0,-95)
-		},
-		{
-			time = 0.2,
-			sound = "wp_korth_reload_bullet_out",
-			visible = {
-				visible = false,
-				parts = {
-					magazine = {
-						"g_bullets_1"
+	self.reload_timelines.korth = {
+		custom_mag_unit = "units/pd2_dlc_vr/units/wpn_pis_speedloader_6x/wpn_pis_speedloader_6x",
+		start = {
+			{
+				time = 0,
+				sound = "wp_korth_reload_mag_out",
+				rot = Rotation()
+			},
+			{
+				time = 0.04,
+				rot = Rotation(0,0,-10)
+			},
+			{
+				time = 0.08,
+				rot = Rotation(0,0,-95)
+			},
+			{
+				time = 0.14,
+				sound = "wp_korth_reload_bullet_out",
+				visible = {
+					visible = false,
+					parts = {
+						magazine = {
+							"g_bullets_1"
+						}
 					}
+				},
+				effect = {
+					object = "g_bullets_1",
+					name = "effects/payday2/particles/weapons/shells/shell_revolver_dump",
+					part = "magazine"
 				}
 			}
 		},
-		{
-			time = 0.21,
-			effect = {
-				object = "a_m",
-				name = "effects/payday2/particles/weapons/shells/shell_revolver_dump"
-			}
-		}
-	}
-	self.reload_timelines.korth.finish = {
+		finish = {
 			{
-			time = 0,
-			sound = "wp_korth_reload_bullet_in",
-			anims = {
-				{
-					anim_group = "reload",
-					from = 2.2,
-					part = "magazine"
+				time = 0,
+				sound = "wp_korth_reload_bullet_in",
+				anims = {
+					{
+						anim_group = "reload",
+						from = 2.2,
+						part = "magazine"
+					}
+				},
+				visible = {
+					visible = false,
+					parts = {
+						magazine = {
+							"g_speedloader"
+						}
+					}
 				}
 			},
-			visible = {
-				visible = false,
-				parts = {
-					magazine = {
-						"g_speedloader"
+			{
+				time = 0.01,
+				visible = {
+					visible = true,
+					parts = {
+						magazine = {
+							"g_bullets_1"
+						}
 					}
 				}
-			}
-		},
-		{
-			time = 0.01,
-			visible = {
-				visible = true,
-				parts = {
-					magazine = {
-						"g_bullets_1"
+			},
+			{
+				time = 0.97,
+				sound = "wp_korth_reload_mag_in",
+				anims = {
+					{
+						anim_group = "reload",
+						from = 2.8,
+						part = "magazine"
 					}
-				}
-			}
-		},
-		{
-			time = 0.97,
-			sound = "wp_korth_reload_mag_in",
-			anims = {
-				{
-					anim_group = "reload",
-					from = 2.8,
-					part = "magazine"
 				}
 			}
 		}
