@@ -47,7 +47,7 @@ Hooks:PostHook(HUDTeammate,"activate_ability_radial_anim","VRFixes_Ability_Radia
 	end
 end)
 
---Positions the down counter so that it doesn't clip into teammate's ammo counters
+--Positions the down counter so that it doesn't clip into the ammo counter on teammates
 Hooks:PostHook(HUDTeammateVR,"set_state","VRFixes_Down_counter_reposition",function(self)
 	if not self._main_player then
 		local teammate_panel = self._panel
@@ -57,29 +57,3 @@ Hooks:PostHook(HUDTeammateVR,"set_state","VRFixes_Down_counter_reposition",funct
 		revive_panel:set_right(name_bg:x())
 	end
 end)
-
---[[function HUDTeammateVR:set_state(state)
-	local teammate_panel = self._panel
-	local is_player = state == "player"
-
-	teammate_panel:child("player"):set_alpha(is_player and 1 or 0)
-
-	local name = teammate_panel:child("name")
-	local name_bg = teammate_panel:child("name_bg")
-	local callsign_bg = teammate_panel:child("callsign_bg")
-	local callsign = teammate_panel:child("callsign")
-
-	if not self._main_player then
-		if is_player then
-			name:set_x(self._radial_health_panel:x() + name:h())
-			name:set_bottom(self._radial_health_panel:top() - 6)
-		else
-			name:set_x(48 + name:h() + 4)
-			name:set_bottom(teammate_panel:h())
-		end
-
-		name_bg:set_position(name:x(), name:y() - 1)
-		callsign_bg:set_position(name:x() - name:h(), name:y() + 1)
-		callsign:set_position(name:x() - name:h(), name:y() + 1)
-	end
-end]]
