@@ -1040,8 +1040,14 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	
 	--Frenchman Model 87 (pd2_dlc_mxw)
 	self.reload_timelines.model3.start[1].anims[1].from = 0.2
+	self.reload_timelines.model3.start[1].anims[1].to = 1.0
 	self.reload_timelines.model3.start[2].time = 0.13
 	self.reload_timelines.model3.start[3].time = 0.13
+	self.reload_timelines.model3.start[3].effect = {
+		object = "g_bullet_01",
+		name = "effects/payday2/particles/weapons/shells/shell_revolver_dump",
+		part = "magazine"
+	}
 	self.reload_timelines.model3.finish[3].anims[1].from = 2.0
 	self.reload_timelines.x_model3 = self.reload_timelines.model3
 	
