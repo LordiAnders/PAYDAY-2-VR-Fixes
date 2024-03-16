@@ -11,8 +11,40 @@ end
 if RequiredScript == "lib/units/beings/player/handmelee" then
 
 Hooks:PreHook(HandMelee,"update","VRFixes_NoMeleeOnTurn",function(self,unit,t)
+	local next_hit_t = math.max(self._next_hit_t or 0,vrfixes_hit_rotate_t or 0)
 	if t < vrfixes_hit_rotate_t then
-		self._next_hit_t = vrfixes_hit_rotate_t
+		self._next_hit_t = next_hit_t
+	end
+end)
+
+
+--Changes the melee damage penalty to use cooldown values more in line with desktop mode, instead of using the unequip timer (repeat_expire_t + melee_damage_delay)
+--Using the unequip timer would cause melee weapons that are normally supposed to be very fast, to be very slow in VR. In some cases it would even make some weapons faster than desktop
+--This must be enabled in the mod options first
+
+local old_expire_t
+
+local function Sane_Melee_Damage_pre(self)
+	if not self:has_melee_weapon() then
+		return
+	end
+
+	--Not the most elegant way of doing this, but it avoids having to completely replace the function
+	old_expire_t = tweak_data.blackmarket.melee_weapons[self._entry].expire_t
+	tweak_data.blackmarket.melee_weapons[self._entry].expire_t = math.min(tweak_data.blackmarket.melee_weapons[self._entry].repeat_expire_t, tweak_data.blackmarket.melee_weapons[self._entry].expire_t) + math.min(tweak_data.blackmarket.melee_weapons[self._entry].melee_damage_delay or 0, tweak_data.blackmarket.melee_weapons[self._entry].repeat_expire_t)
+end
+local function Sane_Melee_Damage_post(self)
+	if old_expire_t then
+		tweak_data.blackmarket.melee_weapons[self._entry].expire_t = old_expire_t
+		old_expire_t = nil
+	end
+end
+
+Hooks:AddHook("VRFixes_Mod_Options_Loaded","VRFixes_Sane_Melee_Damage",function()
+	--Delays creating the hooks until mod settings have been loaded
+	if VRFixes_Mod.Settings.meleecooldown then
+		Hooks:PreHook(HandMelee,"update","VRFixes_Sane_Melee_Damage_pre",Sane_Melee_Damage_pre)
+		Hooks:PostHook(HandMelee,"update","VRFixes_Sane_Melee_Damage_post",Sane_Melee_Damage_post)
 	end
 end)
 
