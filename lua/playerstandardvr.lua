@@ -19,9 +19,32 @@ Hooks:PostHook(PlayerStandard,"discharge_melee","VRFixes_Discharge_Melee",functi
 	end
 end)
 
+--Reapplies the infiltrator/sociopath melee bonus if the melee weapon hits a corpse, within a small period after a kill
+--Tries to prevent cases where melee weapons sometimes strike the corpse in the same swing, and unfairly consuming the melee bonus
+local stacking_hit_grace_period = 0
+Hooks:PreHook(PlayerStandard,"_check_melee_special_damage","VRFixes_Stacking_Hit_Grace",function(self,col_ray,character_unit,defense_data)
+	local t = TimerManager:game():time()
+	if defense_data and defense_data.type == "death" then
+		stacking_hit_grace_period = t + 0.33
+	elseif t < stacking_hit_grace_period then
+		if managers.player:has_category_upgrade("melee", "stacking_hit_damage_multiplier") then
+			self._state_data.stacking_dmg_mul = self._state_data.stacking_dmg_mul or {}
+			self._state_data.stacking_dmg_mul.melee = self._state_data.stacking_dmg_mul.melee or {
+				nil,
+				0
+			}
+			local stack = self._state_data.stacking_dmg_mul.melee
+
+			if character_unit:character_damage().dead and character_unit:character_damage():dead() then
+				stack[1] = t + managers.player:upgrade_value("melee", "stacking_hit_expire_t", 1) - (t - stacking_hit_grace_period)
+				stack[2] = math.min(stack[2] + 1, tweak_data.upgrades.max_melee_weapon_dmg_mul_stacks or 5)
+			end
+		end
+	end
+end)
+
 --These functions needed to be modified for underbarrels to work as intended. The unmodified functions do not check ammo using ammo_base()
 --This causes the belt to display ammo for underbarrels incorrectly, as well as allowing underbarrels to be reloaded instantly before the reload is finished
-
 Hooks:OverrideFunction(PlayerStandardVR,"_start_action_reload",function(self,t)
 	local weapon = self._equipped_unit:base()
 
