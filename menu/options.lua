@@ -8,8 +8,6 @@ if not VRFixes_Mod then
 	}
 	function VRFixes_Mod:LoadSettings()
 		VRFixes_Mod.Settings = io.file_is_readable(VRFixes_Mod.SavePath) and io.load_as_json(VRFixes_Mod.SavePath) or VRFixes_Mod.Settings
-		
-		Hooks:Call("VRFixes_Mod_Options_Loaded")
 	end
 	
 	function VRFixes_Mod:SaveSettings()
@@ -25,10 +23,11 @@ Hooks:AddHook("BLTOnBuildOptions","VRFixes_Options_Build",function()
 		VRFixes_Mod:SaveSettings()
 	end
 	
-	VRFixes_Mod:LoadSettings()
 	MenuHelper:LoadFromJsonFile(VRFixes_Mod.ModPath.."menu/menu.txt",VRFixes_Mod,VRFixes_Mod.Settings)
 end)
 
 Hooks:AddHook("LocalizationManagerPostInit","VRFixes_Options_Loc",function(self)
 	self:load_localization_file(VRFixes_Mod.LocPath)
 end)
+
+VRFixes_Mod:LoadSettings()

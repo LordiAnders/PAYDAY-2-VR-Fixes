@@ -22,31 +22,28 @@ end)
 --Using the unequip timer would cause melee weapons that are normally supposed to be very fast, to be very slow in VR. In some cases it would even make some weapons faster than desktop
 --This must be enabled in the mod options first
 
-local old_expire_t
+if VRFixes_Mod.Settings.meleecooldown then
+	local old_expire_t
 
-local function Sane_Melee_Damage_pre(self)
-	if not self:has_melee_weapon() then
-		return
-	end
+	Hooks:PreHook(HandMelee,"update","VRFixes_Sane_Melee_Damage_pre",function(self)
+		if not self:has_melee_weapon() then
+			return
+		end
 
-	--Not the most elegant way of doing this, but it avoids having to completely replace the function
-	old_expire_t = tweak_data.blackmarket.melee_weapons[self._entry].expire_t
-	tweak_data.blackmarket.melee_weapons[self._entry].expire_t = math.min(tweak_data.blackmarket.melee_weapons[self._entry].repeat_expire_t, tweak_data.blackmarket.melee_weapons[self._entry].expire_t) + math.min(tweak_data.blackmarket.melee_weapons[self._entry].melee_damage_delay or 0, tweak_data.blackmarket.melee_weapons[self._entry].repeat_expire_t)
+		--Not the most elegant way of doing this, but it avoids having to completely replace the function
+		local expire_t = tweak_data.blackmarket.melee_weapons[self._entry].expire_t
+		old_expire_t = expire_t
+		local repeat_expire_t = tweak_data.blackmarket.melee_weapons[self._entry].repeat_expire_t
+		local melee_damage_delay = tweak_data.blackmarket.melee_weapons[self._entry].melee_damage_delay or 0
+		tweak_data.blackmarket.melee_weapons[self._entry].expire_t = math.min(repeat_expire_t, expire_t) + math.min(melee_damage_delay, repeat_expire_t)
+	end)
+	Hooks:PostHook(HandMelee,"update","VRFixes_Sane_Melee_Damage_post",function(self)
+		if old_expire_t then
+			tweak_data.blackmarket.melee_weapons[self._entry].expire_t = old_expire_t
+			old_expire_t = nil
+		end
+	end)
 end
-local function Sane_Melee_Damage_post(self)
-	if old_expire_t then
-		tweak_data.blackmarket.melee_weapons[self._entry].expire_t = old_expire_t
-		old_expire_t = nil
-	end
-end
-
-Hooks:AddHook("VRFixes_Mod_Options_Loaded","VRFixes_Sane_Melee_Damage",function()
-	--Delays creating the hooks until mod settings have been loaded
-	if VRFixes_Mod.Settings.meleecooldown then
-		Hooks:PreHook(HandMelee,"update","VRFixes_Sane_Melee_Damage_pre",Sane_Melee_Damage_pre)
-		Hooks:PostHook(HandMelee,"update","VRFixes_Sane_Melee_Damage_post",Sane_Melee_Damage_post)
-	end
-end)
 
 elseif RequiredScript == "lib/units/beings/player/states/vr/playerstandardvr" then
 
