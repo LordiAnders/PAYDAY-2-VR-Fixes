@@ -3,8 +3,8 @@
 local old_partstypeperkfunction = WeaponFactoryManager.get_parts_from_weapon_by_type_or_perk
 
 function WeaponFactoryManager:get_parts_from_weapon_by_type_or_perk(type_or_perk,...)
-	if vrtweaksfixes_customparttype and type_or_perk == "magazine" then
-		type_or_perk = vrtweaksfixes_customparttype
+	if VRFixes_Mod.customparttype and type_or_perk == "magazine" then
+		type_or_perk = VRFixes_Mod.customparttype
 	end
 
 	return old_partstypeperkfunction(self,type_or_perk,...)

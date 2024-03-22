@@ -2,17 +2,17 @@
 --This only prevents accidental weapon butt melee attacks, melee weapons behave completely differently for some reason when held in the hand
 --This *can* sometimes cause actual melee attacks to fail if the player tries to melee while turning or touching the belt at the same time. Tweaking the timers below changes how long melee gets blocked
 
-vrfixes_hit_rotate_t = 0
+VRFixes_Mod.hit_rotate_t = 0
 
 local function SetMeleeHitRotateT(self,time)
-	vrfixes_hit_rotate_t = TimerManager:game():time() + time
+	VRFixes_Mod.hit_rotate_t = TimerManager:game():time() + time
 end
 
 if RequiredScript == "lib/units/beings/player/handmelee" then
 
 Hooks:PreHook(HandMelee,"update","VRFixes_NoMeleeOnTurn",function(self,unit,t)
-	local next_hit_t = math.max(self._next_hit_t or 0,vrfixes_hit_rotate_t or 0)
-	if t < vrfixes_hit_rotate_t then
+	if t < VRFixes_Mod.hit_rotate_t then
+		local next_hit_t = math.max(self._next_hit_t or 0,VRFixes_Mod.hit_rotate_t)
 		self._next_hit_t = next_hit_t
 	end
 end)

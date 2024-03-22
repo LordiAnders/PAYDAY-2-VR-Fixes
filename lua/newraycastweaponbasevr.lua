@@ -66,7 +66,7 @@ end)
 --See weaponfactorymanager.lua which overrides the hardcoded "magazine" part lookup in spawn_magazine_unit()
 
 Hooks:PreHook(NewRaycastWeaponBaseVR,"spawn_belt_magazine_unit","VRFixes_Belt_Magazine_Override",function(self)
-	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override or nil
+	VRFixes_Mod.customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override or nil
 	VRTweakFixes_StartReload(self)
 end)
 Hooks:PostHook(NewRaycastWeaponBaseVR,"spawn_belt_magazine_unit","VRFixes_Belt_Magazine_Addons",function(self,pos)
@@ -76,27 +76,27 @@ Hooks:PostHook(NewRaycastWeaponBaseVR,"spawn_belt_magazine_unit","VRFixes_Belt_M
 	if reload_addon then
 		if type(reload_addon) == "table" then
 			for k,v in pairs(reload_addon) do
-				vrtweaksfixes_customparttype = k
+				VRFixes_Mod.customparttype = k
 
 				local second_mag = self:spawn_magazine_unit(pos + v.pos,v.rot)
 				mag_unit:link(mag_unit:orientation_object():name(),second_mag)
 			end
 		else
-			vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_addon or nil
+			VRFixes_Mod.customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_addon or nil
 			
 			local second_mag = self:spawn_magazine_unit(pos)
 			mag_unit:link(mag_unit:orientation_object():name(),second_mag)
 		end
 	end
 	
-	vrtweaksfixes_customparttype = nil
+	VRFixes_Mod.customparttype = nil
 
 	return mag_unit
 end)
 
 Hooks:PreHook(NewRaycastWeaponBase,"drop_magazine_object","VRTweakFixes_Magazine_Override",function(self)
-	vrtweaksfixes_customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override or nil
+	VRFixes_Mod.customparttype = tweak_data.vr.reload_timelines[self.name_id] and tweak_data.vr.reload_timelines[self.name_id].reload_part_override or nil
 end)
 Hooks:PostHook(NewRaycastWeaponBase,"drop_magazine_object","VRTweakFixes_Magazine_Override",function(self)
-	vrtweaksfixes_customparttype = nil
+	VRFixes_Mod.customparttype = nil
 end)
