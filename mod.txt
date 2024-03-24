@@ -27,7 +27,8 @@
 		{"hook_id" : "lib/managers/hud/vr/hudteammatevr","script_path" : "lua/hudteammatevr.lua"},
 		{"hook_id" : "lib/utils/vrfadeout","script_path" : "lua/vrfadeout.lua"},
 		{"hook_id" : "lib/managers/menu/crimenetcontractgui","script_path" : "lua/crimenetcontractgui.lua"},
-		{"hook_id" : "lib/managers/menu/menucomponentmanager","script_path" : "lua/crimenetcontractgui.lua"}
+		{"hook_id" : "lib/managers/menu/menucomponentmanager","script_path" : "lua/crimenetcontractgui.lua"},
+		{"hook_id" : "lib/units/beings/player/states/vr/hand/playerhandstateitem","script_path" : "lua/playerhandstateitem.lua"}
     ],
 	"pre_hooks" : [
 		{"hook_id" : "lib/entry","script_path" : "menu/options.lua"},
