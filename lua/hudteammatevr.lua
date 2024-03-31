@@ -48,32 +48,14 @@ Hooks:PostHook(HUDTeammate,"activate_ability_radial_anim","VRFixes_Ability_Radia
 end)
 
 --Positions the down counter so that it doesn't clip into the ammo counter on teammates
-Hooks:PostHook(HUDTeammateVR,"set_state","VRFixes_Down_counter_reposition",function(self,state)
+Hooks:PostHook(HUDTeammateVR,"set_state","VRFixes_Down_counter_reposition",function(self)
 	if not self._main_player then
 		local teammate_panel = self._panel
 		local name = teammate_panel:child("name")
 		local name_bg = teammate_panel:child("name_bg")
-
 		local revive_panel = self._player_panel:child("revive_panel")
 		revive_panel:set_center_y(name_bg:y() + name_bg:h() / 2 + 2)
 		revive_panel:set_right(name_bg:x())
-	end
-end)
-
-Hooks:PostHook(HUDTeammateVR,"set_ammo_amount_by_type","VRFixes_Down_counter_reposition",function(self,state)
-	if not self._main_player then
-		local teammate_panel = self._panel
-		local name = teammate_panel:child("name")
-		local name_bg = teammate_panel:child("name_bg")
-		
-		local red = name:color().r
-		local gren = name:color().g
-		local blu = name:color().b
-		local alpha = name:color().a
-
-		DisplayVRDebug_Output("["..name:text().."]: - r:"..red.." - g:"..gren.." - b:"..blu.." - a:"..alpha,self._id)
-			--name:set_x(48 + name:h() + 4)
-			--name:set_bottom(teammate_panel:h() - 30)
 	end
 end)
 
