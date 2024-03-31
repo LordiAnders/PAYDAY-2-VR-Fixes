@@ -48,12 +48,46 @@ Hooks:PostHook(HUDTeammate,"activate_ability_radial_anim","VRFixes_Ability_Radia
 end)
 
 --Positions the down counter so that it doesn't clip into the ammo counter on teammates
-Hooks:PostHook(HUDTeammateVR,"set_state","VRFixes_Down_counter_reposition",function(self)
+Hooks:PostHook(HUDTeammateVR,"set_state","VRFixes_Down_counter_reposition",function(self,state)
 	if not self._main_player then
 		local teammate_panel = self._panel
+		local name = teammate_panel:child("name")
 		local name_bg = teammate_panel:child("name_bg")
+
 		local revive_panel = self._player_panel:child("revive_panel")
 		revive_panel:set_center_y(name_bg:y() + name_bg:h() / 2 + 2)
 		revive_panel:set_right(name_bg:x())
+	end
+end)
+
+Hooks:PostHook(HUDTeammateVR,"set_ammo_amount_by_type","VRFixes_Down_counter_reposition",function(self,state)
+	if not self._main_player then
+		local teammate_panel = self._panel
+		local name = teammate_panel:child("name")
+		local name_bg = teammate_panel:child("name_bg")
+		
+		local red = name:color().r
+		local gren = name:color().g
+		local blu = name:color().b
+		local alpha = name:color().a
+
+		DisplayVRDebug_Output("["..name:text().."]: - r:"..red.." - g:"..gren.." - b:"..blu.." - a:"..alpha,self._id)
+			--name:set_x(48 + name:h() + 4)
+			--name:set_bottom(teammate_panel:h() - 30)
+	end
+end)
+
+--Bandaid fix for player names sometimes going invisible
+--Callsign's alpha is sometimes 0 when this gets called, causing player names to turn invisible
+--This is unbelievably hard to diagnose, and I can't quite pin-point out why it's happening
+Hooks:PostHook(HUDTeammate,"set_callsign","VRFixes_Callsign_Alpha",function(self)
+	local teammate_panel = self._panel
+	local callsign = teammate_panel:child("callsign")
+	if callsign:color().a == 0 then
+		callsign:set_color(callsign:color():with_alpha(1))
+
+		local name = teammate_panel:child("name")
+
+		name:set_color(name:color():with_alpha(1))
 	end
 end)
