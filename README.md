@@ -19,9 +19,12 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed weapons in underbarrel modes sharing the same reload timeline as the standard fire mode.
 - Fixed akimbo weapons playing empty magazine sounds/animations before they are completely empty.
 - Fixed weapon skins not applying correctly to held/dropped magazines.
-- Removed hitpoint variable from the Tactical Flashlight melee that made it difficult to hit enemies.
 - Fixed a few magazines lacking bullet_object definitions despite existing in their models, so the bullets in the magazine update properly.
 - Fixed held and dropped magazines not displaying the correct amount of bullets in them.
+- Added a small delay before being able to fire a weapon when masking up instantly when placing the mask directly on the head, to prevent accidentally firing the weapon at the same time.
+- Added a mod option to change the melee damage cooldown to something that better resembles melee cooldowns in desktop mode.
+- Added a small grace period after performing a melee kill that prevents the infiltrator/sociopath melee bonus from being lost when hitting a corpse in the same swing.
+- Removed hitpoint variable from the Tactical Flashlight melee weapon that made it difficult to hit enemies.
 ### Skills
 - Fixed the Counterstrike skill not working with VR melee.
 - Fixed the Stockholm Syndrome skill not working. Pressing teleport/sprint in custody now activates it.
@@ -30,6 +33,9 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed not being able to resize panels on the VR belt when editing the layout.
 - Fixed the ammo counter on the VR belt slowly moving outside the reload panel over time.
 - Fixed reload timer and belt not accounting for weapons in underbarrel modes.
+- Fixed ability icons on teammates becoming stuck and not showing progress circles.
+- Fixed the down counter clipping into the ammo counter on teammates.
+- Fixed player names sometimes turning invisible on the tablet.
 - Restored the intended font size for the ammo panel.
 ### Heists
 - Fixed ladders on Big Bank, Counterfeit and Election Day day 2 (warehouse) having bad exit points, causing the player to clip through walls or fall to their death.
