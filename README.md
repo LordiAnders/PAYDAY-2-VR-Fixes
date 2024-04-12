@@ -46,6 +46,7 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed the player not getting teleported correctly by the game when the 'Collision Teleport' setting is turned on. (Fixes Border Crossing tunnel teleport, out of bounds teleport and 'killer ziplines')
 - Fixed a crash caused by hands sometimes being invalid in the 'hand in wall' check.
 - Fixed a crash that can sometimes occur when a heist starts after the black intro screen.
+- Added a check to make sure you have enough grenades before throwing one, to prevent tripping the game's anticheat.
 ### Improvements
 - Unlocked all weapons that were 'VR Locked' as they are now all usable and reload correctly.
 - Removed annoying grip points on the LMGs that make them hard to two-hand properly, they now only have 1 grip point.
