@@ -45,10 +45,21 @@ end)
 
 --These functions needed to be modified for underbarrels to work as intended. The unmodified functions do not check ammo using ammo_base()
 --This causes the belt to display ammo for underbarrels incorrectly, as well as allowing underbarrels to be reloaded instantly before the reload is finished
+--Also attempts to fix partial reloads sometimes restoring negative ammo in some cases, when using manual reloading
 Hooks:OverrideFunction(PlayerStandardVR,"_start_action_reload",function(self,t)
 	local weapon = self._equipped_unit:base()
 
 	if weapon and weapon:can_reload() then
+		self._state_data.reload_time_offset = nil
+		local time_manager = TimerManager:game():time()
+		--TimerManager can sometimes go out of sync from the 't' timer, which causes _current_reload_amount to return negative values, restoring negative ammo when performing partial reloads
+		--In order to fix this; if the timer becomes desynced, an offset is made, which is added onto the timer in _current_reload_amount, which should correct it so it doesn't return negative ammo
+		--This seems to have fixed it after testing it for a while, but it is a bit of a bandaid solution
+		--This is hard to diagnose, because it happens seemingly randomly. The bug seems to occur if you play as a client and the heist hasn't started yet
+		if time_manager < t then
+			self._state_data.reload_time_offset = t - time_manager
+		end
+	
 		weapon:tweak_data_anim_stop("fire")
 
 		local speed_multiplier = weapon:reload_speed_multiplier()
@@ -108,7 +119,7 @@ end)
 
 Hooks:OverrideFunction(PlayerStandardVR,"_current_reload_amount",function(self)
 	if self._state_data.reload_expire_t then
-		local t = TimerManager:game():time()
+		local t = TimerManager:game():time() + (self._state_data.reload_time_offset or 0)
 		local weapon = self._equipped_unit:base()
 		local total = self._state_data.reload_expire_t - self._state_data.reload_start_t
 		local progress = t - self._state_data.reload_start_t
