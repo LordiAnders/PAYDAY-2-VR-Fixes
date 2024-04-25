@@ -45,8 +45,9 @@ Hooks:PostHook(WeaponFactoryTweakData,"init","VRTweakDataFixes_FactoryTweakFixes
 		prefix = "g_bullet_"
 	}
 
-	self.parts.wpn_fps_sho_rota_m_standard.bullet_objects = {
+	--Goliath 12G (Commented out. The shotgun doesn't actually eject shells, and it looks weird when the magazine rotates)
+	--[[self.parts.wpn_fps_sho_rota_m_standard.bullet_objects = {
 		amount = 6,
 		prefix = "g_slug_"
-	}
+	}]]
 end)
