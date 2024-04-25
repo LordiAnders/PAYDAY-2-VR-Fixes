@@ -472,6 +472,7 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	self.weapon_offsets.weapons.x_korth = self.weapon_offsets.weapons.korth
 	
 	--Claire 12G (pd2_dlc_sdb)
+	self.magazine_offsets.coach.weapon_offset = Vector3(0,13,9)
 	self.reload_timelines.coach.reload_part_type = "stock"
 	self.reload_timelines.coach.start = {
 			{
@@ -1638,6 +1639,12 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 
 	--Raven (pd2_dlc_gage_shot)
 	self.reload_timelines.ksg.reload_part_type = "lower_body"
+	
+	--Mosconi 12G (payday2)
+	self.magazine_offsets.huntsman.weapon_offset = Vector3(0,15,12)
+	
+	--Joceline O/U 12G (pd2_dlc_bonnie)
+	self.magazine_offsets.b682.weapon_offset = Vector3(0,12,8)
 
 	self.weapon_assist.weapons.hk21.points[2] = nil
 	self.weapon_assist.weapons.rpk.points[2] = nil
