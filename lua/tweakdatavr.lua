@@ -1750,6 +1750,96 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 		position = Vector3(-0.5, 1.2, 1.5)
 	}
 	
+	--Nagant (pd2_dlc_gage_historical)
+	self.magazine_offsets.mosin = {
+		position = Vector3(10, 21, 6),
+		rotation = Rotation(-20, 5, 10),
+		weapon_offset = Vector3(0,18,8)
+	}
+	self.weapon_offsets.weapons.mosin = {
+		grip = "weapon_2_grip",
+		position = Vector3(0, -1, 0)
+	}
+	self.reload_timelines.mosin = {
+		reload_part_override_hidden = {
+			"g_bullet_recoil"
+		},
+		start = {
+			{
+				time = 0,
+				sound = "wp_nagant_pull_bolt_side",
+				anims = {
+					{
+						anim_group = "reload",
+						to = 2,
+						from = 0.4,
+						part = "stock"
+					}
+				}
+			},
+			{
+				time = 0.08,
+				sound = "wp_nagant_pull_bolt_back"
+			}
+		},
+		finish = {
+			{
+				time = 0,
+				sound = "wp_nagant_first_slide",
+				visible = {
+					visible = true,
+					parts = {
+						magazine = {
+							"g_bullets",
+							"g_clip"
+						}
+					}
+				},
+				anims = {
+					{
+						anim_group = "reload",
+						to = 2,
+						from = 1.6,
+						part = "stock"
+					},
+					{
+						anim_group = "reload",
+						--to = 2.8,
+						from = 2.4,
+						part = "magazine"
+					}
+				}
+			},
+			{
+				time = 0.99,
+				sound = "wp_nagant_push_bolt_side",
+				visible = {
+					visible = false,
+					parts = {
+						magazine = {
+							"g_bullets",
+							"g_clip"
+						}
+					}
+				},
+				anims = {
+					{
+						anim_group = "reload",
+						--to = 1,
+						from = 3.1,
+						part = "stock"
+					},
+					{
+						anim_group = "reload",
+						--to = 2.8,
+						from = 4,
+						part = "magazine"
+					}
+				}
+			}
+		}
+	}
+	
 	--Krinkov (payday2)
 	self.weapon_offsets.weapons.akmsu = {
 		position = Vector3(0, 2, 1.5)
