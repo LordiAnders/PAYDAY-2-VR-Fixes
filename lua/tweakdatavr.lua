@@ -324,6 +324,9 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 			}
 		}
 	}
+	
+	--English Longbow (pd2_dlc_steel)
+	self.weapon_offsets.weapons.long.position = Vector3(-0.5, 0.8, 2)
 
 	--Basilisk 3V (pd2_dlc_pxp1)
 	self.magazine_offsets.ms3gl = {
@@ -800,6 +803,8 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 		}
 	}
 	
+	
+	
 	--MA-17 Flamethrower (pd2_dlc_sft)
 	self.magazine_offsets.system = {
 		position = Vector3(4,0,10),
@@ -809,6 +814,9 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	self.weapon_assist.weapons.system = {
 		grip = "idle_wpn",
 		position = Vector3(-1.2, 24, 0)
+	}
+	self.weapon_offsets.weapons.system = {
+		position = Vector3(-0.5, 1.2, 1.5)
 	}
 	self.reload_timelines.system = {
 		start = {
@@ -1024,6 +1032,9 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 		"g_shute_lod0",
 		"g_bullet"
 	}
+	
+	--Plainsrider Bow (pd2_dlc_west)
+	self.weapon_offsets.weapons.plainsrider.position = Vector3(-0.5, 0.8, 2)
 	
 	--Bernetti Rangehitter (pd2_dlc_mxw)
 	self.weapon_offsets.weapons.sbl = {
@@ -1271,11 +1282,13 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	self.weapon_offsets.weapons.holt = {
 		position = Vector3(-0.5, 1.9, 1.6)
 	}
+	self.weapon_offsets.weapons.x_holt = {
+		position = Vector3(-0.5, 1.9, 1)
+	}
 	self.magazine_offsets.holt = {
 		position = Vector3(1,1.5,-5)
 	}
 	self.magazine_offsets.x_holt = self.magazine_offsets.holt
-	self.weapon_offsets.weapons.x_holt = self.weapon_offsets.weapons.holt
 
 	--R700 (pd2_dlc_atw)
 	self.weapon_offsets.weapons.r700 = {
@@ -1372,6 +1385,9 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	}
 
 	--Airbow (pd2_dlc_ecp)
+	self.weapon_offsets.weapons.ecp = {
+		position = Vector3(-0.5, 2, 1)
+	}
 	self.magazine_offsets.ecp.weapon_offset = Vector3(0,12,10)
 	self.reload_timelines.ecp = {
 		reload_part_addon = "ammo",
@@ -1544,7 +1560,7 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 
 	--Czech 92 (pd2_dlc_afp)
 	self.weapon_offsets.weapons.czech.position = Vector3(-0.5,4,1)
-	self.weapon_offsets.weapons.x_czech.position = Vector3(-0.5,4,1)
+	self.weapon_offsets.weapons.x_czech.position = Vector3(-0.5,2.8,1)
 	self.reload_timelines.czech.start[1].sound = "wp_czech_mag_out"
 	self.reload_timelines.czech.finish[1].sound = "wp_czech_mag_in"
 	self.reload_timelines.czech.finish[4].sound = "wp_czech_slide_forward"
@@ -1566,6 +1582,9 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	
 	--M13 9mm (pd2_dlc_khp)
 	self.weapon_offsets.weapons.legacy = {
+		position = Vector3(-0.5, 2, 2.2)
+	}
+	self.weapon_offsets.weapons.x_legacy = {
 		position = Vector3(-0.5, 2, 2.2)
 	}
 	self.weapon_offsets.weapons.x_legacy = self.weapon_offsets.weapons.legacy
@@ -1645,7 +1664,120 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	
 	--Joceline O/U 12G (pd2_dlc_bonnie)
 	self.magazine_offsets.b682.weapon_offset = Vector3(0,12,8)
-
+	
+	--Flamethrower Mk.1 (pd2_dlc_bbq)
+	self.weapon_offsets.weapons.flamethrower_mk2 = {
+		position = Vector3(-0.5, 0.5, 2)
+	}
+	
+	--GL40 (pd2_dlc_gage_assault)
+	self.weapon_offsets.weapons.gre_m79.position = Vector3(-0.5, 1.4, 0.5)
+	
+	--LEO (pd2_dlc_cro)
+	self.weapon_offsets.weapons.hs2000 = {
+		position = Vector3(-0.5, 2.8, 2)
+	}
+	self.weapon_offsets.weapons.x_hs2000 = {
+		position = Vector3(-0.5, 2.8, 2)
+	}
+	
+	--Signature .40 (pd2_dlc_dec5)
+	self.weapon_offsets.weapons.p226 = {
+		position = Vector3(-0.5, 2.8, 1.8)
+	}
+	self.weapon_offsets.weapons.x_p226 = {
+		position = Vector3(-0.5, 2.8, 1.8)
+	}
+	
+	--Crosskill (payday2)
+	self.weapon_offsets.weapons.colt_1911 = {
+		position = Vector3(-0.5, 1.2, 1.4)
+	}
+	self.weapon_offsets.weapons.x_colt_1911 = {
+		position = Vector3(-0.5, 1.2, 1.4)
+	}
+	
+	--Contractor (pd2_dlc_pim)
+	self.weapon_offsets.weapons.packrat = {
+		position = Vector3(-0.5, 2.2, 2)
+	}
+	self.weapon_offsets.weapons.x_packrat = {
+		position = Vector3(-0.5, 2.2, 2)
+	}
+	
+	--Castigo .44 (pd2_dlc_max)
+	self.weapon_offsets.weapons.chinchilla = {
+		position = Vector3(-0.5, 2.7, 2)
+	}
+	self.weapon_offsets.weapons.x_chinchilla = {
+		position = Vector3(-0.5, 2.7, 2)
+	}
+	
+	--Baby Deagle (pd2_dlc_rip)
+	self.weapon_offsets.weapons.sparrow = {
+		position = Vector3(-0.5, 2, 1.5)
+	}
+	self.weapon_offsets.weapons.x_sparrow = {
+		position = Vector3(-0.5, 2, 1.5)
+	}
+	
+	--XL 5.56 Microgun (pd2_dlc_dmg)
+	self.weapon_offsets.weapons.shuno = {
+		position = Vector3(-0.5, 1.8, 0.2)
+	}
+	
+	--Para (payday2)
+	self.weapon_offsets.weapons.olympic = {
+		position = Vector3(-0.5, 1.8, 1)
+	}
+	self.weapon_offsets.weapons.x_olympic = {
+		position = Vector3(-0.5, 1.8, 1)
+	}
+	
+	--Tatonka (pd2_dlc_grv)
+	self.weapon_offsets.weapons.coal = {
+		position = Vector3(-0.5, 1.8, 1)
+	}
+	self.weapon_offsets.weapons.x_coal = {
+		position = Vector3(-0.5, 1.8, 1)
+	}
+	
+	--Patchett L2A1 (pd2_dlc_gage_historical)
+	self.weapon_offsets.weapons.sterling = {
+		position = Vector3(-0.5, 1.2, 1.5)
+	}
+	self.weapon_offsets.weapons.x_sterling = {
+		position = Vector3(-0.5, 1.2, 1.5)
+	}
+	
+	--Krinkov (payday2)
+	self.weapon_offsets.weapons.akmsu = {
+		position = Vector3(0, 2, 1.5)
+	}
+	self.weapon_offsets.weapons.x_akmsu = {
+		position = Vector3(0, 2, 1.5)
+	}
+	
+	--Akimbo Blaster 9mm (pd2_dlc_osa)
+	self.weapon_offsets.weapons.x_tec9 = {
+		position = Vector3(-0.5, 1, 0.8)
+	}
+	
+	--Akimbo CMP (pd2_dlc_osa)
+	self.weapon_offsets.weapons.x_mp9 = {
+		position = Vector3(-0.5, 1.5, 1.5)
+	}
+	
+	--Akimbo Mark 10 (pd2_dlc_osa)
+	self.weapon_offsets.weapons.x_mac10 = {
+		position = Vector3(-0.5, 1.5, 2)
+	}
+	
+	--Akimbo SpecOps (pd2_dlc_osa)
+	self.weapon_offsets.weapons.x_mp7 = {
+		position = Vector3(-0.5, 1, 2)
+	}
+	
 	self.weapon_assist.weapons.hk21.points[2] = nil
 	self.weapon_assist.weapons.rpk.points[2] = nil
 	self.weapon_assist.weapons.mg42 = {
