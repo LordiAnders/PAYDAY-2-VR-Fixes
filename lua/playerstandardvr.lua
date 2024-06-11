@@ -43,6 +43,29 @@ Hooks:PreHook(PlayerStandard,"_check_melee_special_damage","VRFixes_Stacking_Hit
 	end
 end)
 
+--Stop faulty conditions from stopping the fire animation on the final shot
+--The conditions to stop the animation do not check if the trigger is being held or released, when attempting to do dryfire
+--So when the final shot is fired, the game will immediately check if it should stop the animation, because the trigger is still being held briefly
+--This is only an issue when the auto reload setting is turned on
+local old_fire_per_weapon = PlayerStandardVR._check_fire_per_weapon
+function PlayerStandardVR:_check_fire_per_weapon(t, pressed, held, released, weap_base, ...)
+	if not pressed and (held or released) then
+		if weap_base.clip_empty and weap_base:clip_empty() then
+			if self:_interacting() then
+				return false
+			end
+
+			local should_reload_immediately = self._equipped_unit:base().should_reload_immediately and self._equipped_unit:base():should_reload_immediately()
+			
+			if not managers.vr:get_setting("auto_reload") and not should_reload_immediately then
+				held = false
+				released = false
+			end
+		end
+	end
+	return old_fire_per_weapon(self, t, pressed, held, released, weap_base, ...)
+end
+
 --These functions needed to be modified for underbarrels to work as intended. The unmodified functions do not check ammo using ammo_base()
 --This causes the belt to display ammo for underbarrels incorrectly, as well as allowing underbarrels to be reloaded instantly before the reload is finished
 --Also attempts to fix partial reloads sometimes restoring negative ammo in some cases, when using manual reloading
