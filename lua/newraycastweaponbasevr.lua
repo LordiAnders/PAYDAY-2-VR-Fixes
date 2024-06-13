@@ -104,7 +104,7 @@ end)
 --Fixes laser beam becoming offset on gadgets that are placed in a non-default rotation
 local old_set_gadget_rot = NewRaycastWeaponBase.set_gadget_rotation
 
---[[function NewRaycastWeaponBase:set_gadget_rotation(rot,...)
+function NewRaycastWeaponBase:set_gadget_rotation(rot,...)
 	if not self._enabled then
 		return
 	end
@@ -125,4 +125,4 @@ local old_set_gadget_rot = NewRaycastWeaponBase.set_gadget_rotation
 	end
 	
 	return old_set_gadget_rot(self,rot,...)
-end]]
+end
