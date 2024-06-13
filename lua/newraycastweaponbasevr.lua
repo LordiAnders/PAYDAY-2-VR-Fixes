@@ -100,3 +100,29 @@ end)
 Hooks:PostHook(NewRaycastWeaponBase,"drop_magazine_object","VRTweakFixes_Magazine_Override",function(self)
 	VRFixes_Mod.customparttype = nil
 end)
+
+--Fixes laser beam becoming offset on gadgets that are placed in a non-default rotation
+local old_set_gadget_rot = NewRaycastWeaponBase.set_gadget_rotation
+
+--[[function NewRaycastWeaponBase:set_gadget_rotation(rot,...)
+	if not self._enabled then
+		return
+	end
+	
+	local gadget_rotation
+	if self._a_fl_gadget_rotation then
+		gadget_rotation = self._a_fl_gadget_rotation
+	else
+		local a_object = self._unit:get_object(Idstring("a_fl"))
+		if a_object then
+			self._a_fl_gadget_rotation = a_object:local_rotation()
+			gadget_rotation = self._a_fl_gadget_rotation
+		end
+	end
+	
+	if gadget_rotation then
+		mrotation.multiply(rot,gadget_rotation)
+	end
+	
+	return old_set_gadget_rot(self,rot,...)
+end]]
