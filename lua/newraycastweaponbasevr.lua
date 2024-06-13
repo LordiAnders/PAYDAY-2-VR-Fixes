@@ -101,6 +101,25 @@ Hooks:PostHook(NewRaycastWeaponBase,"drop_magazine_object","VRTweakFixes_Magazin
 	VRFixes_Mod.customparttype = nil
 end)
 
+--This needed to be modified so tmp_pos_vec is defined inside the function, instead of outside
+--Otherwise it causes lasers on akimbo weapons to use share the same position when using set_gadget_position
+Hooks:OverrideFunction(NewRaycastWeaponBase,"set_gadget_position",function(self,pos)
+	if not self._enabled then
+		return
+	end
+
+	local active_gadget = self:get_active_gadget()
+
+	if active_gadget and active_gadget.set_position then
+		local tmp_pos_vec = Vector3()
+	
+		mvector3.set(tmp_pos_vec, active_gadget._unit:position())
+		mvector3.subtract(tmp_pos_vec, self._unit:position())
+		mvector3.add(tmp_pos_vec, pos)
+		active_gadget:set_position(tmp_pos_vec)
+	end
+end)
+
 --Fixes laser beam becoming offset on gadgets that are placed in a non-default rotation
 local old_set_gadget_rot = NewRaycastWeaponBase.set_gadget_rotation
 
