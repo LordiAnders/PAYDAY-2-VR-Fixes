@@ -3,7 +3,7 @@
 	"description" : "Bunch of fixes for the VR version of the game.",
 	"author" : "LordiAnders",
 	"color" : "0.5 0.25 0.9",
-	"version" : "6",
+	"version" : "7",
 	"blt_version" : 2,
 	"hooks" : [
 		{"hook_id" : "lib/tweak_data/tweakdatavr","script_path" : "lua/tweakdatavr.lua"},
