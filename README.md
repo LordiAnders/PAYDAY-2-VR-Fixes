@@ -11,6 +11,7 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Improved reload timelines on some weapons that had little animation or to reduce clipping.
 - Fixed many weapons lacking reload sounds.
 - Adjusted many weapon offsets so they sit better in the hand.
+- Fixed double-barrel shotguns having poor magazine insertion points when using manual reloading.
 - Fixed several two-hand grip points that were poorly positioned or used the wrong hand animation.
 - Fixed several magazines being held incorrectly.
 - Fixed Airbow and SG Versteckt 51D not displaying held magazines properly.
@@ -21,10 +22,14 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed weapon skins not applying correctly to held/dropped magazines.
 - Fixed a few magazines lacking bullet_object definitions despite existing in their models, so the bullets in the magazine update properly.
 - Fixed held and dropped magazines not displaying the correct amount of bullets in them.
+- Fixed the fire animation not playing on weapons on the final shot, when using manual reloading.
+- Fixed gadget laser beams becoming offset when the gadget is located anywhere but the right side of the weapon.
+- Fixed gadget laser beams lagging behind on akimbo weapons when moving.
 - Added a small delay before being able to fire a weapon when masking up instantly when placing the mask directly on the head, to prevent accidentally firing the weapon at the same time.
 - Added a mod option to change the melee damage cooldown to something that better resembles melee cooldowns in desktop mode.
 - Added a small grace period after performing a melee kill that prevents the infiltrator/sociopath melee bonus from being lost when hitting a corpse in the same swing.
 - Removed hitpoint variable from the Tactical Flashlight melee weapon that made it difficult to hit enemies.
+- Added a possible fix for weapons sometimes restoring negative ammo when performing partial reloads with manual reloading.
 ### Skills
 - Fixed the Counterstrike skill not working with VR melee.
 - Fixed the Stockholm Syndrome skill not working. Pressing teleport/sprint in custody now activates it.
