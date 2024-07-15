@@ -854,7 +854,7 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 				time = 0.07,
 				visible = false,
 				pos = Vector3(-8, 4, 3),
-				rot = Rotation(10, 10, -10)
+				rot = Rotation(10, 10, 30)
 			}
 		},
 		finish = {
@@ -1866,6 +1866,28 @@ Hooks:PostHook(TweakDataVR,"init","VRTweakDataFixes_Init",function(self,tweak_da
 	--Akimbo SpecOps (pd2_dlc_osa)
 	self.weapon_offsets.weapons.x_mp7 = {
 		position = Vector3(-0.5, 1, 2)
+	}
+	
+	--Cash Blaster (pd2_dlc_pda8)
+	self.magazine_offsets.money = self.magazine_offsets.system
+	self.weapon_assist.weapons.money = self.weapon_assist.weapons.system
+	self.weapon_offsets.weapons.money = self.weapon_offsets.weapons.system
+	self.reload_timelines.money = deep_clone(self.reload_timelines.system)
+	self.reload_timelines.money.start[1].sound = "wp_moneythrower_open_valve"
+	self.reload_timelines.money.start[2].sound = "wp_moneythrower_pull_tube"
+	self.reload_timelines.money.start[3].sound = "wp_moneythrower_twist_tube"
+	self.reload_timelines.money.finish[1].sound = "wp_moneythrower_insert_tube"
+	self.reload_timelines.money.finish[2].sound = "wp_moneythrower_lock_tube"
+	self.reload_timelines.money.finish[3].sound = "wp_moneythrower_close_valve"
+	self.weapon_kick.exclude_list.money = true
+	
+	--Flintlock Freddy (pd2_dlc_pda10)
+	self.magazine_offsets.bessy = {
+		weapon_offset = Vector3(1.5,12,8)
+	}
+	self.weapon_offsets.weapons.bessy = {
+		grip = "weapon_2_grip",
+		position = Vector3(0, -1, 0)
 	}
 	
 	self.weapon_assist.weapons.hk21.points[2] = nil
