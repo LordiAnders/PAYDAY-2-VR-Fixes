@@ -7,6 +7,14 @@
 	"items" : [
 		{
 			"type" : "toggle",
+			"id" : "eventdecorations",
+			"title" : "VRFixes_Mod_Options_eventdecorations_title",
+			"description" : "VRFixes_Mod_Options_eventdecorations_desc",
+			"callback" : "VRFixes_Mod_Options_toggle",
+			"value" : "eventdecorations"
+		},
+		{
+			"type" : "toggle",
 			"id" : "meleecooldown",
 			"title" : "VRFixes_Mod_Options_meleecooldown_title",
 			"description" : "VRFixes_Mod_Options_meleecooldown_desc",

@@ -4,6 +4,7 @@ if not VRFixes_Mod then
 	VRFixes_Mod.LocPath = VRFixes_Mod.ModPath.."menu/loc.txt"
 	VRFixes_Mod.SavePath = SavePath.."vrfixes.txt"
 	VRFixes_Mod.Settings = {
+		eventdecorations = true,
 		meleecooldown = false
 	}
 	function VRFixes_Mod:LoadSettings()
