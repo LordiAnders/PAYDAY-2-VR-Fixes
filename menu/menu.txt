@@ -7,10 +7,10 @@
 	"items" : [
 		{
 			"type" : "toggle",
-			"id" : "VRFixes_Mod_Options_meleecooldown",
+			"id" : "meleecooldown",
 			"title" : "VRFixes_Mod_Options_meleecooldown_title",
 			"description" : "VRFixes_Mod_Options_meleecooldown_desc",
-			"callback" : "VRFixes_Mod_Options_meleecooldown_set",
+			"callback" : "VRFixes_Mod_Options_toggle",
 			"value" : "meleecooldown"
 		}
 	]

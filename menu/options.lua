@@ -16,8 +16,8 @@ if not VRFixes_Mod then
 end
 
 Hooks:AddHook("BLTOnBuildOptions","VRFixes_Options_Build",function()
-	MenuCallbackHandler.VRFixes_Mod_Options_meleecooldown_set = function(self,item)
-		VRFixes_Mod.Settings.meleecooldown = Utils:ToggleItemToBoolean(item)
+	MenuCallbackHandler.VRFixes_Mod_Options_toggle = function(self,item)
+		VRFixes_Mod.Settings[item:name()] = Utils:ToggleItemToBoolean(item)
 	end
 	MenuCallbackHandler.VRFixes_Mod_Options_save = function()
 		VRFixes_Mod:SaveSettings()
