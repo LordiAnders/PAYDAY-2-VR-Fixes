@@ -7,7 +7,12 @@ if not VRFixes_Mod then
 		meleecooldown = false
 	}
 	function VRFixes_Mod:LoadSettings()
-		VRFixes_Mod.Settings = io.file_is_readable(VRFixes_Mod.SavePath) and io.load_as_json(VRFixes_Mod.SavePath) or VRFixes_Mod.Settings
+		local file = io.file_is_readable(VRFixes_Mod.SavePath) and io.load_as_json(VRFixes_Mod.SavePath)
+		if file then
+			for k,v in pairs(file) do
+				VRFixes_Mod.Settings[k] = v
+			end
+		end
 	end
 	
 	function VRFixes_Mod:SaveSettings()
