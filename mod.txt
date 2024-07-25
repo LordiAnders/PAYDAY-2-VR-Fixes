@@ -3,7 +3,7 @@
 	"description" : "Bunch of fixes for the VR version of the game.",
 	"author" : "LordiAnders",
 	"color" : "0.5 0.25 0.9",
-	"version" : "7",
+	"version" : "8",
 	"blt_version" : 2,
 	"hooks" : [
 		{"hook_id" : "lib/tweak_data/tweakdatavr","script_path" : "lua/tweakdatavr.lua"},
@@ -36,5 +36,15 @@
 	"pre_hooks" : [
 		{"hook_id" : "lib/entry","script_path" : "menu/options.lua"},
 		{"hook_id" : "lib/managers/hud/vr/hudteammatevr","script_path" : "lua/hudteammatevr_pre.lua"}
+	],
+	"updates" : [
+		{
+			"identifier" : "PAYDAY-2-VR-Fixes",
+			"host" : {
+				"meta" : "https://lordianders.github.io/PD2-Mod-Updates/VR-Fixes/meta.json",
+				"download": "https://lordianders.github.io/PD2-Mod-Updates/VR-Fixes/VR.Fixes.zip",
+				"patchnotes": "https://modworkshop.net/mod/45520?tab=changelog"
+			}
+		}
 	]
 }
