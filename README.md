@@ -25,9 +25,6 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed the fire animation not playing on weapons on the final shot, when using manual reloading.
 - Fixed gadget laser beams becoming offset when the gadget is located anywhere but the right side of the weapon.
 - Fixed gadget laser beams lagging behind on akimbo weapons when moving.
-- Added a small delay before being able to fire a weapon when masking up instantly when placing the mask directly on the head, to prevent accidentally firing the weapon at the same time.
-- Added a mod option to change the melee damage cooldown to something that better resembles melee cooldowns in desktop mode.
-- Added a small grace period after performing a melee kill that prevents the infiltrator/sociopath melee bonus from being lost when hitting a corpse in the same swing.
 - Removed hitpoint variable from the Tactical Flashlight melee weapon that made it difficult to hit enemies.
 - Added a possible fix for weapons sometimes restoring negative ammo when performing partial reloads with manual reloading.
 ### Skills
@@ -42,6 +39,7 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed the down counter clipping into the ammo counter on teammates.
 - Fixed player names sometimes turning invisible on the tablet.
 - Restored the intended font size for the ammo panel.
+- Added a proper belt icon for the Adhesive Grenade, replacing the placeholder Snowball icon.
 ### Heists
 - Fixed ladders on Big Bank, Counterfeit and Election Day day 2 (warehouse) having bad exit points, causing the player to clip through walls or fall to their death.
 - The collision fade out effect from getting close to walls is temporarily disabled when using the turrets in Midland Ranch and Lost in Transit.
@@ -51,15 +49,19 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed the player not getting teleported correctly by the game when the 'Collision Teleport' setting is turned on. (Fixes Border Crossing tunnel teleport, out of bounds teleport and 'killer ziplines')
 - Fixed a crash caused by hands sometimes being invalid in the 'hand in wall' check.
 - Fixed a crash that can sometimes occur when a heist starts after the black intro screen.
-- Added a check to make sure you have enough grenades before throwing one, to prevent tripping the game's anticheat.
+- Added a check to prevent throwing too many grenades, when using the VR belt, which could trip the game's anticheat.
+- Fixed the event decorations, that are enabled at certain times of the year, not being implemented properly for the VR main menu. These can be disabled in the mod options.
 ### Improvements
 - Unlocked all weapons that were 'VR Locked' as they are now all usable and reload correctly.
-- Removed annoying grip points on the LMGs that make them hard to two-hand properly, they now only have 1 grip point.
+- Removed annoying grip points on the LMGs that make them hard to two-hand properly. They now only have 1 grip point.
+- Added a small weapon fire delay when masking up from placing the mask directly on the head, to prevent accidentally firing the weapon at the same time.
+- Added a mod option to change the melee damage cooldown to something that better resembles melee cooldowns in desktop mode.
+- Added a small grace period after performing a melee kill that prevents the infiltrator/sociopath melee bonus from being lost when hitting a corpse in the same swing.
 
 ## Underbarrel weapons
-Overkill had apparently tried to get underbarrel weapons working in VR.
+Overkill had apparently tried to get underbarrel weapons working in VR in Update 207.
 
-As of U240.2 you can toggle underbarrel modes by using the "fire mode" binding, but it can sometimes conflict with the regular fire mode. I'd recommend putting on a forced single/auto fire weapon mod to avoid this.
+You can toggle underbarrel modes by using the "fire mode" binding, but it can sometimes conflict with the regular fire mode. I'd recommend putting on a forced single/auto fire weapon mod to avoid this.
 
 Additionally, underbarrel modes can only be toggled while you're not "aiming down sights" (weapon held at eye level and looking straight).
 
