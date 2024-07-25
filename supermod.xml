@@ -6,5 +6,8 @@
 			<file :name="shells/shell_slug_straight.effect"/>
 			<file :name="fps_parts/fps_ms3gl_exhaust_smoke_vr.effect"/>
 		</group>
+		<group name="guis/dlcs/">
+			<file :name="mxm/textures/pd2/blackmarket/icons/grenades/outline/sticky_grenade.texture"/>
+		</group>
 	</assets>
 </mod>
