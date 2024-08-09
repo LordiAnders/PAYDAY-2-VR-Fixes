@@ -73,3 +73,26 @@ Hooks:PostHook(HUDTeammate,"set_callsign","VRFixes_Callsign_Alpha",function(self
 		name:set_color(name:color():with_alpha(1))
 	end
 end)
+
+--Hook for updating the secondary counter in the deployable belt item, for deployables with secondary functions (shaped charges)
+--This requires new, custom functions in hudbelt.lua, since the original belt doesn't support secondary amount texts normally
+--This also requires playermanager.lua. Otherwise there are cases where the counter will not update properly
+Hooks:PreHook(HUDTeammateVR,"set_deployable_equipment_amount_from_string","VRFixes_set_shaped_charges_count",function(self,index,data)
+	--Needs to be PreHook. The original function calls HUDBeltInteraction:set_state, which controls visibility. The text needs to be created before set_state gets called
+	if self._main_player then
+		local belt_id = index == 1 and "deployable" or "deployable_secondary"
+
+		managers.hud:belt():set_amount_secondary(belt_id, data.amount[2]) --Custom function added in hudbelt.lua
+	end
+end)
+
+Hooks:PostHook(HUDTeammateVR,"set_deployable_equipment_amount","VRFixes_set_shaped_charges_count",function(self,index,data)
+	if self._main_player then
+		local belt_id = index == 1 and "deployable" or "deployable_secondary"
+
+		--set_deployable_equipment_amount_from_string gets called even for deployables without a secondary function, which causes a secondary counter to get created
+		--If set_deployable_equipment_amount gets called afterwards, remove the bogus secondary counter by setting the amount to nil
+		--This is a bit of a workaround...
+		managers.hud:belt():set_amount_secondary(belt_id)
+	end
+end)
