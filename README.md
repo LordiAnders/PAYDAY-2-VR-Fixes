@@ -40,6 +40,8 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed player names sometimes turning invisible on the tablet.
 - Restored the intended font size for the ammo panel.
 - Added a proper belt icon for the Adhesive Grenade, replacing the placeholder Snowball icon.
+- Added a secondary counter for trip mines on the VR belt, that displays how many shaped charges are left.
+- Fixed the announcements text on the main menu clipping outside of the screen.
 ### Heists
 - Fixed ladders on Big Bank, Counterfeit and Election Day day 2 (warehouse) having bad exit points, causing the player to clip through walls or fall to their death.
 - The collision fade out effect from getting close to walls is temporarily disabled when using the turrets in Midland Ranch and Lost in Transit.
