@@ -38,7 +38,7 @@ Hooks:PreHook(AkimboWeaponBaseVR,"_check_magazine_empty","VRFixes_Akimbo_check_m
 	end
 end)
 Hooks:PostHook(AkimboWeaponBaseVR,"_check_magazine_empty","VRFixes_Akimbo_check_magazine_empty",function(self)
-	if lastakimbo then
+	if prevakimbo then
 		self.AKIMBO = prevakimbo
 		prevakimbo = nil
 	end
