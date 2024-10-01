@@ -152,3 +152,26 @@ Hooks:OverrideFunction(PlayerStandardVR,"_current_reload_amount",function(self)
 		return math.floor((max_ammo - weapon:ammo_base():get_ammo_remaining_in_clip()) * ratio) + weapon:ammo_base():get_ammo_remaining_in_clip()
 	end
 end)
+
+--Fixes Civilian and Clean player states using run speeds when warping, and allowing jumping
+--Ideally this should be in its own separate file, with a _can_run() function defined in it that returns false,
+--but I want to avoid splitting the two fixes into two different files, since they both address similar issues
+if VRFixes_Mod.Settings.civilianstatefix then
+	Hooks:PostHook(PlayerStandardVR,"_can_run","VRFixes_Civilian_state_run_fix",function(self)
+		local state_name = self._ext_movement:current_state_name()
+		local disable_run = state_name == "civilian" or state_name == "clean"
+		
+		if disable_run then
+			return false
+		end
+	end)
+
+	Hooks:PostHook(WarpTargetState,"_update_warp_variables","VRFixes_Clean_state_jump_fix",function(self)
+		local state_name = self.params.unit:movement():current_state_name()
+		local disable_jump = state_name == "clean"
+		
+		if disable_jump then
+			self._warp_ext:set_enable_jump(false)
+		end
+	end)
+end

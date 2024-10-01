@@ -6,7 +6,8 @@ if not VRFixes_Mod then
 	VRFixes_Mod.Settings = {
 		eventdecorations = true,
 		meleecooldown = false,
-		bleedoutmeleefix = true
+		bleedoutmeleefix = true,
+		civilianstatefix = true
 	}
 	function VRFixes_Mod:LoadSettings()
 		local file = io.file_is_readable(VRFixes_Mod.SavePath) and io.load_as_json(VRFixes_Mod.SavePath)

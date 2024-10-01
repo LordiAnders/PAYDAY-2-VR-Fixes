@@ -33,5 +33,13 @@
 			"callback" : "VRFixes_Mod_Options_toggle",
 			"value" : "bleedoutmeleefix"
 		},
+		{
+			"type" : "toggle",
+			"id" : "civilianstatefix",
+			"title" : "VRFixes_Mod_Options_civilianstatefix_title",
+			"description" : "VRFixes_Mod_Options_civilianstatefix_desc",
+			"callback" : "VRFixes_Mod_Options_toggle",
+			"value" : "civilianstatefix"
+		},
 	]
 }
