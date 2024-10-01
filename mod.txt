@@ -33,7 +33,9 @@
 		{"hook_id" : "lib/units/beings/player/states/vr/hand/playerhandstateakimbo","script_path" : "lua/playerhandstateakimbo.lua"},
 		{"hook_id" : "lib/managers/menuscenemanagervr","script_path" : "lua/menuscenemanagervr.lua"},
 		{"hook_id" : "lib/managers/playermanager","script_path" : "lua/playermanager.lua"},
-		{"hook_id" : "lib/managers/menu/newsfeedgui","script_path" : "lua/newsfeedgui.lua"}
+		{"hook_id" : "lib/managers/menu/newsfeedgui","script_path" : "lua/newsfeedgui.lua"},
+		{"hook_id" : "lib/units/beings/player/states/vr/playerbleedoutvr","script_path" : "lua/playerbleedoutvr.lua"},
+		{"hook_id" : "lib/units/beings/player/states/vr/playerfatalvr","script_path" : "lua/playerbleedoutvr.lua"}
 	],
 	"pre_hooks" : [
 		{"hook_id" : "lib/entry","script_path" : "menu/options.lua"},

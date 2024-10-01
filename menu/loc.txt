@@ -4,4 +4,6 @@
 	"VRFixes_Mod_Options_eventdecorations_desc":"Allows event decorations, that appear at certain times of the year, to also spawn in the VR menu scene\nDisabling this will also remove effects that are normally present in vanilla (e.g confetti) (Requires restart)",
 	"VRFixes_Mod_Options_meleecooldown_title":"Melee damage cooldown rebalance",
 	"VRFixes_Mod_Options_meleecooldown_desc":"Changes the melee damage cooldown to use the attack cooldown instead of the unequip delay\nThis makes melee more in line with the desktop version of the game (Requires map restart)",
+	"VRFixes_Mod_Options_bleedoutmeleefix_title":"Bleedout Equipment Unequip Fix",
+	"VRFixes_Mod_Options_bleedoutmeleefix_desc":"Fixes melee weapons and deployables not getting unequipped in some cases when getting downed\n(Requires map restart)",
 }

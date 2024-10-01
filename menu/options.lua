@@ -5,7 +5,8 @@ if not VRFixes_Mod then
 	VRFixes_Mod.SavePath = SavePath.."vrfixes.txt"
 	VRFixes_Mod.Settings = {
 		eventdecorations = true,
-		meleecooldown = false
+		meleecooldown = false,
+		bleedoutmeleefix = true
 	}
 	function VRFixes_Mod:LoadSettings()
 		local file = io.file_is_readable(VRFixes_Mod.SavePath) and io.load_as_json(VRFixes_Mod.SavePath)

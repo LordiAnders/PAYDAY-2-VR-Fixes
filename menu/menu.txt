@@ -20,6 +20,18 @@
 			"description" : "VRFixes_Mod_Options_meleecooldown_desc",
 			"callback" : "VRFixes_Mod_Options_toggle",
 			"value" : "meleecooldown"
-		}
+		},
+		{
+			"type" : "divider",
+			"size" : "32"
+		},
+		{
+			"type" : "toggle",
+			"id" : "bleedoutmeleefix",
+			"title" : "VRFixes_Mod_Options_bleedoutmeleefix_title",
+			"description" : "VRFixes_Mod_Options_bleedoutmeleefix_desc",
+			"callback" : "VRFixes_Mod_Options_toggle",
+			"value" : "bleedoutmeleefix"
+		},
 	]
 }
