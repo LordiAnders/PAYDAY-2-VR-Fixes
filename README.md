@@ -25,6 +25,8 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed the fire animation not playing on weapons on the final shot, when using manual reloading.
 - Fixed gadget laser beams becoming offset when the gadget is located anywhere but the right side of the weapon.
 - Fixed gadget laser beams lagging behind on akimbo weapons when moving.
+- Fixed the second gun turning invisible when the primary hand is touching the VR belt, when using akimbo weapons.
+- Added a possible fix for gadget on/off states sometimes becoming desynced between akimbo weapons (laser on one gun, but not the other).
 - Removed hitpoint variable from the Tactical Flashlight melee weapon that made it difficult to hit enemies.
 - Added a possible fix for weapons sometimes restoring negative ammo when performing partial reloads with manual reloading.
 ### Skills
@@ -53,6 +55,8 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed a crash that can sometimes occur when a heist starts after the black intro screen.
 - Added a check to prevent throwing too many grenades, when using the VR belt, which could trip the game's anticheat.
 - Fixed the event decorations, that are enabled at certain times of the year, not being implemented properly for the VR main menu. These can be disabled in the mod options.
+- Fixed "civilian mode" using running movement speeds when using teleportation, and sometimes allowing jumping when it is supposed to be disabled. This fix can be disabled in the mod options.
+- Fixed a few cases where the game could fail to unequip melee weapons and deployables when downed. This fix can be disabled in the mod options.
 ### Improvements
 - Unlocked all weapons that were 'VR Locked' as they are now all usable and reload correctly.
 - Removed annoying grip points on the LMGs that make them hard to two-hand properly. They now only have 1 grip point.
