@@ -43,3 +43,25 @@ Hooks:PostHook(AkimboWeaponBaseVR,"_check_magazine_empty","VRFixes_Akimbo_check_
 		prevakimbo = nil
 	end
 end)
+
+--Required so akimbo weapons don't share the same vector,
+--otherwise multiple calls to set_gadget_position will cause lasers to clip into each other
+local tmp_pos_vec = Vector3()
+function AkimboWeaponBaseVR:set_gadget_position(pos,...)
+	if not self._enabled then
+		return
+	end
+
+	if self.parent_weapon then
+		local active_gadget = self:get_active_gadget()
+
+		if active_gadget and active_gadget.set_position then
+			mvector3.set(tmp_pos_vec, active_gadget._unit:position())
+			mvector3.subtract(tmp_pos_vec, self._unit:position())
+			mvector3.add(tmp_pos_vec, pos)
+			active_gadget:set_position(tmp_pos_vec)
+		end
+	else
+		AkimboWeaponBaseVR.super.set_gadget_position(self, pos, ...)
+	end
+end
