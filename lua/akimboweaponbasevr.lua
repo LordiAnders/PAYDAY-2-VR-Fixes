@@ -65,3 +65,13 @@ function AkimboWeaponBaseVR:set_gadget_position(pos,...)
 		AkimboWeaponBaseVR.super.set_gadget_position(self, pos, ...)
 	end
 end
+
+function AkimboWeaponBaseVR:set_visibility_state(...)
+	AkimboWeaponBaseVR.super.set_visibility_state(self, ...)
+
+	--Causes second gun to be hidden whenever the primary hand touches the VR belt, or changes state
+	--The second gun can still be fired when made invisible by this, and it causes gadget effects to float in the air
+	--[[if alive(self._second_gun) then
+		self._second_gun:base():set_visibility_state(...)
+	end]]
+end
