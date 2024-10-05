@@ -1,8 +1,5 @@
 --Stops akimbo weapons playing empty magazine animation/sound before they're completely empty
 
---TODO: Can possibly be simplified? The AKIMBO variable is only used in a few places to determine if magazine_empty functions should run.
---Make sure it is set to true in RaycastWeaponBase:add_ammo though, as AKIMBO is used for some ammo calculations 
-
 local function mag_check(anim,weapon)
 	if anim == "magazine_empty" then
 		local mag = weapon:ammo_base():get_ammo_remaining_in_clip()

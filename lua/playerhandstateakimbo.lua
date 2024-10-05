@@ -1,5 +1,5 @@
 --Fixes akimbo weapon gadget lasers lagging behind when moving
---This requires the set_gadget_position edit in newraycastweaponbasevr, or else both weapons' lasers will share the same position
+--This requires the set_gadget_position edit in akimboweaponbasevr, or else both weapons' lasers will share the same position
 local weapon_pos = Vector3()
 
 Hooks:PostHook(PlayerHandStateAkimbo,"update","VRFixes_Akimbo_Gadget_Laser_Lag_Fix",function(self)

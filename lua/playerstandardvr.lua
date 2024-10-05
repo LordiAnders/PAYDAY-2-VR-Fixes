@@ -46,7 +46,7 @@ end)
 --Stop faulty conditions from stopping the fire animation on the final shot
 --The conditions to stop the animation do not check if the trigger is being held or released, when attempting to do dryfire
 --So when the final shot is fired, the game will immediately check if it should stop the animation, because the trigger is still being held briefly
---This is only an issue when the auto reload setting is turned on
+--This is only an issue when the auto reload setting is turned off
 local old_fire_per_weapon = PlayerStandardVR._check_fire_per_weapon
 function PlayerStandardVR:_check_fire_per_weapon(t, pressed, held, released, weap_base, ...)
 	if not pressed and (held or released) then
