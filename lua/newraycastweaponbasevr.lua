@@ -32,7 +32,8 @@ end)
 --Records the ammo count during reload actions to track how many bullets should be visible in magazines, see cosmeticweaponbase.lua
 --This is set using a variable before reloading starts since otherwise checking reload_amount when the magazine is spawned would cause the magazine to always be partially filled since magazines are spawned after a delay
 local function VRTweakFixes_StartReload(self)
-	self.vrfixesammoreloadcount = managers.player:player_unit():movement():current_state():_current_reload_amount() or self:get_ammo_total()
+	local player_unit = managers.player:player_unit()
+	self.vrfixesammoreloadcount = (alive(player_unit) and player_unit:movement():current_state():_current_reload_amount() or self:get_ammo_total())
 end
 local function VRTweakFixes_FinishReload(self)
 	self.vrfixesammoreloadcount = nil

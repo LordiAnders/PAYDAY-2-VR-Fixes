@@ -125,14 +125,16 @@ Hooks:OverrideFunction(PlayerStandardVR,"_start_action_reload",function(self,t)
 		self._ext_network:send("reload_weapon", empty_reload, speed_multiplier)
 
 		if not managers.vr:get_setting("auto_reload") then
-			if weapon:is_category("saw") then
-				managers.hud:belt():start_reload(reload_time, 0, 1)
+			if managers.hud:belt() then --Check added for compatibility with the More Weapon Stats mod. The belt is not accessible from the main menu, or loadout screen, which causes an error when MWS performs fake reloads to generate stats
+				if weapon:is_category("saw") then
+					managers.hud:belt():start_reload(reload_time, 0, 1)
 
-				self._state_data.needs_full_reload = true
-			else
-				local max_ammo = math.min(weapon:ammo_base():get_ammo_max_per_clip(), weapon:ammo_base():get_ammo_total())
+					self._state_data.needs_full_reload = true
+				else
+					local max_ammo = math.min(weapon:ammo_base():get_ammo_max_per_clip(), weapon:ammo_base():get_ammo_total())
 
-				managers.hud:belt():start_reload(reload_time, weapon:ammo_base():get_ammo_remaining_in_clip(), max_ammo)
+					managers.hud:belt():start_reload(reload_time, weapon:ammo_base():get_ammo_remaining_in_clip(), max_ammo)
+				end
 			end
 		end
 
