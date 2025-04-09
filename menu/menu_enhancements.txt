@@ -1,0 +1,16 @@
+{
+	"menu_id" : "VRFixes_Mod_Options_sub_enhancements",
+	"parent_menu_id" : "VRFixes_Mod_Options",
+	"title" : "VRFixes_Mod_Options_sub_enhancements_title",
+	"description" : "VRFixes_Mod_Options_sub_enhancements_desc",
+	"items" : [
+		{
+			"type" : "toggle",
+			"id" : "meleecooldown",
+			"title" : "VRFixes_Mod_Options_meleecooldown_title",
+			"description" : "VRFixes_Mod_Options_meleecooldown_desc",
+			"callback" : "VRFixes_Mod_Options_toggle",
+			"value" : "meleecooldown"
+		},
+	]
+}

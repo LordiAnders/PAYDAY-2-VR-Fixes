@@ -9,6 +9,13 @@ if not VRFixes_Mod then
 		bleedoutmeleefix = true,
 		civilianstatefix = true
 	}
+	
+	VRFixes_Mod.menu_files = {
+		"menu", --Contains a dummy divider item (needs at least 1 item), otherwise back_callback doesn't work
+		"menu_fixes",
+		"menu_enhancements"
+	}
+	
 	function VRFixes_Mod:LoadSettings()
 		local file = io.file_is_readable(VRFixes_Mod.SavePath) and io.load_as_json(VRFixes_Mod.SavePath)
 		if file then
@@ -31,7 +38,9 @@ Hooks:AddHook("BLTOnBuildOptions","VRFixes_Options_Build",function()
 		VRFixes_Mod:SaveSettings()
 	end
 	
-	MenuHelper:LoadFromJsonFile(VRFixes_Mod.ModPath.."menu/menu.txt",VRFixes_Mod,VRFixes_Mod.Settings)
+	for k,v in ipairs(VRFixes_Mod.menu_files) do
+		MenuHelper:LoadFromJsonFile(VRFixes_Mod.ModPath.."menu/"..v..".txt",VRFixes_Mod,VRFixes_Mod.Settings)
+	end
 end)
 
 Hooks:AddHook("LocalizationManagerPostInit","VRFixes_Options_Loc",function(self)

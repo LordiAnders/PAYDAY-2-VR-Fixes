@@ -1,0 +1,36 @@
+{
+	"menu_id" : "VRFixes_Mod_Options_sub_fixes",
+	"parent_menu_id" : "VRFixes_Mod_Options",
+	"title" : "VRFixes_Mod_Options_sub_fixes_title",
+	"description" : "VRFixes_Mod_Options_sub_fixes_desc",
+	"items" : [
+		{
+			"type" : "toggle",
+			"id" : "eventdecorations",
+			"title" : "VRFixes_Mod_Options_eventdecorations_title",
+			"description" : "VRFixes_Mod_Options_eventdecorations_desc",
+			"callback" : "VRFixes_Mod_Options_toggle",
+			"value" : "eventdecorations"
+		},
+		{
+			"type" : "divider",
+			"size" : "32"
+		},
+		{
+			"type" : "toggle",
+			"id" : "bleedoutmeleefix",
+			"title" : "VRFixes_Mod_Options_bleedoutmeleefix_title",
+			"description" : "VRFixes_Mod_Options_bleedoutmeleefix_desc",
+			"callback" : "VRFixes_Mod_Options_toggle",
+			"value" : "bleedoutmeleefix"
+		},
+		{
+			"type" : "toggle",
+			"id" : "civilianstatefix",
+			"title" : "VRFixes_Mod_Options_civilianstatefix_title",
+			"description" : "VRFixes_Mod_Options_civilianstatefix_desc",
+			"callback" : "VRFixes_Mod_Options_toggle",
+			"value" : "civilianstatefix"
+		},
+	]
+}

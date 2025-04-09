@@ -1,11 +1,19 @@
 {
 	"VRFixes_Mod_Options_title":"VR Fixes",
+	
+	"VRFixes_Mod_Options_sub_fixes_title":"Patch Options",
+	"VRFixes_Mod_Options_sub_fixes_desc":"Options for toggling specific patches that fix issues with the VR game",
+	
 	"VRFixes_Mod_Options_eventdecorations_title":"Enable event decorations in VR menu scene",
-	"VRFixes_Mod_Options_eventdecorations_desc":"Allows event decorations, that appear at certain times of the year, to also spawn in the VR menu scene\nDisabling this will also remove effects that are normally present in vanilla (e.g confetti) (Requires restart)",
-	"VRFixes_Mod_Options_meleecooldown_title":"Melee damage cooldown rebalance",
-	"VRFixes_Mod_Options_meleecooldown_desc":"Changes the melee damage cooldown to use the attack cooldown instead of the unequip delay\nThis makes melee more in line with the desktop version of the game (Requires map restart)",
+	"VRFixes_Mod_Options_eventdecorations_desc":"Enables VR specific tweaks required for event decorations to show up correctly in the main menu\nDisabling this will also remove effects that are normally present in vanilla (i.e confetti) (Requires restart)",
 	"VRFixes_Mod_Options_bleedoutmeleefix_title":"Bleedout Equipment Unequip Fix",
 	"VRFixes_Mod_Options_bleedoutmeleefix_desc":"Fixes melee weapons and deployables not getting unequipped in some cases when getting downed\n(Requires map restart)",
 	"VRFixes_Mod_Options_civilianstatefix_title":"Civilian Player State Fixes",
 	"VRFixes_Mod_Options_civilianstatefix_desc":"Fixes movement speed being too high when using teleportation in civilian mode\nAlso fixes jumping being allowed in some cases when it is supposed to be disabled (Requires map restart)",
+	
+	"VRFixes_Mod_Options_sub_enhancements_title":"Enhancement Options",
+	"VRFixes_Mod_Options_sub_enhancements_desc":"Options for VR quality of life improvements and tweaks",
+	
+	"VRFixes_Mod_Options_meleecooldown_title":"Melee damage cooldown rebalance",
+	"VRFixes_Mod_Options_meleecooldown_desc":"Changes the melee damage cooldown to use the attack cooldown instead of the unequip delay\nThis makes melee more in line with the desktop version of the game (Requires map restart)",
 }
