@@ -44,6 +44,8 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Added a proper belt icon for the Adhesive Grenade, replacing the placeholder Snowball icon.
 - Added a secondary counter for trip mines on the VR belt, that displays how many shaped charges are left.
 - Fixed the announcements text on the main menu clipping outside of the screen.
+- Fixed the downed teammate waypoint timer overlapping with the distance indicator.
+- Fixed floating player/team AI name labels sometimes lingering after the player/team AI leaves the game.
 ### Heists
 - Fixed ladders on Big Bank, Counterfeit and Election Day day 2 (warehouse) having bad exit points, causing the player to clip through walls or fall to their death.
 - The collision fade out effect from getting close to walls is temporarily disabled when using the turrets in Midland Ranch and Lost in Transit.
@@ -57,6 +59,7 @@ This mod accomplishes the same fixes as Zdann's mod and shouldn't be used togeth
 - Fixed the event decorations, that are enabled at certain times of the year, not being implemented properly for the VR main menu. These can be disabled in the mod options.
 - Fixed "civilian mode" using running movement speeds when using teleportation, and sometimes allowing jumping when it is supposed to be disabled. This fix can be disabled in the mod options.
 - Fixed a few cases where the game could fail to unequip melee weapons and deployables when downed. This fix can be disabled in the mod options.
+- Added a sanity check in the "start reload" code for when auto reload is turned off, to prevent errors caused by some mods that perform fake reloads at times where the VR belt is not available. (i.e the 'More Weapon Stats' mod)
 ### Improvements
 - Unlocked all weapons that were 'VR Locked' as they are now all usable and reload correctly.
 - Removed annoying grip points on the LMGs that make them hard to two-hand properly. They now only have 1 grip point.
